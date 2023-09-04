@@ -24,7 +24,7 @@ function App() {
         title="my-first-video"
         isOpen={isOpen}
         onClosed={() => setIsOpen(false)}
-        url="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+        url="https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
       />
     </div>
   );
