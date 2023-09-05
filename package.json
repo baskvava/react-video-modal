@@ -1,6 +1,6 @@
 {
   "name": "@baskvava/react-video-modal",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "This is a react library for video embbeded in modal",
   "scripts": {
     "rollup": "rollup -c --bundleConfigAsCjs"
