@@ -2,6 +2,8 @@
 
 This is a react library for video embbeded in modal
 
+[Demo](https://react-video-modal.vercel.app/)
+
 ## Installation
 
 npm i @baskvava/react-video-modal
