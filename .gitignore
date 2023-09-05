@@ -14,6 +14,7 @@
 /example/.cache
 /example/.parcel-cache
 /example/dist
+/example/public
 
 # misc
 .DS_Store
