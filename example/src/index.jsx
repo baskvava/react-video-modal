@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./App.css";
+import ReactDOM from "react-dom/client";
 import { ModalVideo } from "@baskvava/react-video-modal";
 
 function App() {
@@ -17,29 +17,10 @@ function App() {
     </div>
   );
 }
-export default App;
 
-// import React, { useState } from 'react';
-// import ReactDOM from 'react-dom';
-// import ModalVideo from 'react-modal-video';
-
-// const App = () => {
-//   const [isOpen, setOpen] = useState(false);
-
-//   return (
-//     <React.Fragment>
-//       <ModalVideo
-// 				channel="youtube"
-// 				youtube={{ mute: 0, autoplay: 0 }}
-// 				isOpen={isOpen}
-// 				videoId="L61p2uyiMSo"
-// 				onClose={() => setOpen(false)}
-// 			/>
-//       <button className="btn-primary" onClick={() => setOpen(true)}>
-//         VIEW DEMO
-//       </button>
-//     </React.Fragment>
-//   );
-// };
-
-// ReactDOM.render(<App />, document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);

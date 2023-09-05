@@ -11,6 +11,9 @@
 
 # production
 /build
+/example/.cache
+/example/.parcel-cache
+/example/dist
 
 # misc
 .DS_Store
