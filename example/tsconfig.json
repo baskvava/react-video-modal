@@ -18,7 +18,6 @@
     "declaration": true,
     "declarationDir": "types",
     "sourceMap": true,
-    "outDir": "dist",
     "emitDeclarationOnly": true
   },
   "include": ["src/*"],
