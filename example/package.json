@@ -5,7 +5,7 @@
   "source": "src/index.html",
   "scripts": {
     "start": "parcel src/index.html --open",
-    "build": "parcel build src/index.html --out-dir public"
+    "build": "parcel build src/index.html --no-minify --out-dir public"
   },
   "dependencies": {
     "@baskvava/react-video-modal": "^0.0.13",
