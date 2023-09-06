@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
+import { useWindowDimensions } from "./useWindowDimensions";
+
 import "./ModalVideo.css";
 
 type Props = {
@@ -9,6 +11,7 @@ type Props = {
   title: string;
   header?: string | JSX.Element;
   width?: number;
+  widthRatio?: number;
 };
 
 function ModalVideo({
@@ -17,9 +20,12 @@ function ModalVideo({
   url,
   title,
   header = "This is my first video",
-  width = 800,
+  width,
+  widthRatio = 0.8,
 }: Props) {
   const modalRef = useRef<HTMLDivElement | null>(null);
+  const windowSize = useWindowDimensions();
+  const videoWidth = width ?? windowSize.width * widthRatio;
 
   useEffect(() => {
     const handleKeydown = (e: KeyboardEvent) => {
@@ -66,11 +72,14 @@ function ModalVideo({
                 </svg>
               </button>
             </div>
-            <div className="modal-body" style={{ height: (width * 9) / 16 }}>
+            <div
+              className="modal-body"
+              style={{ height: (videoWidth * 9) / 16 }}
+            >
               <iframe
                 title={title}
-                width={width}
-                height={(width * 9) / 16}
+                width={videoWidth}
+                height={(videoWidth * 9) / 16}
                 src={url}
                 frameBorder="0"
                 allowFullScreen
