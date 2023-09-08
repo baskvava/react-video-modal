@@ -1,6 +1,6 @@
 {
   "name": "@baskvava/react-video-modal",
-  "version": "0.0.15",
+  "version": "0.0.17",
   "description": "This is a react library for video embbeded in modal",
   "scripts": {
     "rollup": "rollup -c --bundleConfigAsCjs"
@@ -12,7 +12,12 @@
   "keywords": [
     "react",
     "video",
-    "modal"
+    "modal",
+    "react-video",
+    "react-modal",
+    "video-modal",
+    "react-modal-video",
+    "react-video-modal"
   ],
   "author": "baskvava",
   "license": "MIT",
