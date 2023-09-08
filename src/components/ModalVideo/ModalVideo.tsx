@@ -12,7 +12,10 @@ type Props = {
   header?: string | JSX.Element;
   width?: number;
   widthRatio?: number;
+  ratio?: number[];
 };
+
+const MAX_WIDTH = 1280;
 
 function ModalVideo({
   isOpen = false,
@@ -21,11 +24,15 @@ function ModalVideo({
   title,
   header = "This is my first video",
   width,
-  widthRatio = 0.8,
+  widthRatio = 0.8, // iframe ratio of widow
+  ratio = [9, 16], // iframe ratio of width, height
 }: Props) {
   const modalRef = useRef<HTMLDivElement | null>(null);
   const windowSize = useWindowDimensions();
-  const videoWidth = width ?? windowSize.width * widthRatio;
+  const [wRatio, hRatio] = ratio;
+  const widowWidth = windowSize.width * widthRatio;
+  const videoWidth = width ?? Math.min(widowWidth * widthRatio, MAX_WIDTH);
+  const videoHeight = (videoWidth * wRatio) / hRatio;
 
   useEffect(() => {
     const handleKeydown = (e: KeyboardEvent) => {
@@ -74,12 +81,12 @@ function ModalVideo({
             </div>
             <div
               className="modal-body"
-              style={{ height: (videoWidth * 9) / 16 }}
+              style={{ height: Math.floor(videoHeight) }}
             >
               <iframe
                 title={title}
                 width={videoWidth}
-                height={(videoWidth * 9) / 16}
+                height={videoHeight}
                 src={url}
                 frameBorder="0"
                 allowFullScreen
