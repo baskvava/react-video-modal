@@ -1,8 +1,7 @@
 {
-  "name": "@baskvava/react-video-modal",
+  "name": "website",
   "version": "0.0.0",
   "private": true,
-  "homepage": "https://baskvava.github.io/react-video-modal/",
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
