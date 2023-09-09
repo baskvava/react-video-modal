@@ -8,6 +8,10 @@ function getWindowDimensions() {
   };
 }
 
+/**
+ * @deprecated
+ */
+
 export function useWindowDimensions() {
   const [windowSize, setWindowSize] = useState(getWindowDimensions());
 

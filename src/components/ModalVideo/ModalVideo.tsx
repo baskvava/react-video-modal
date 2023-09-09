@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { useWindowDimensions } from "./useWindowDimensions";
 
 import "./ModalVideo.css";
+import { useWindowObserver } from "./useWidowObserver";
 
 type Props = {
   isOpen: boolean;
@@ -15,7 +16,7 @@ type Props = {
   ratio?: number[];
 };
 
-const MAX_WIDTH = 1280;
+const MAX_WIDTH = 1200;
 
 function ModalVideo({
   isOpen = false,
@@ -28,11 +29,14 @@ function ModalVideo({
   ratio = [9, 16], // iframe ratio of width, height
 }: Props) {
   const modalRef = useRef<HTMLDivElement | null>(null);
-  const windowSize = useWindowDimensions();
+  const { observerWidth } = useWindowObserver();
   const [wRatio, hRatio] = ratio;
-  const widowWidth = windowSize.width * widthRatio;
+  const widowWidth = observerWidth * widthRatio;
   const videoWidth = width ?? Math.min(widowWidth * widthRatio, MAX_WIDTH);
   const videoHeight = (videoWidth * wRatio) / hRatio;
+
+  const widowDim = useWindowObserver();
+  console.log({ widowDim });
 
   useEffect(() => {
     const handleKeydown = (e: KeyboardEvent) => {
