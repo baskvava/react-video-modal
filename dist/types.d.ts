@@ -7,7 +7,10 @@ type Props = {
     title: string;
     header?: string | JSX.Element;
     width?: number;
+    widthRatio?: number;
+    ratio?: number[];
 };
-declare function ModalVideo({ isOpen, onClosed, url, title, header, width, }: Props): react_jsx_runtime.JSX.Element | null;
+declare function ModalVideo({ isOpen, onClosed, url, title, header, width, widthRatio, // iframe ratio of widow
+ratio, }: Props): react_jsx_runtime.JSX.Element | null;
 
 export { ModalVideo };

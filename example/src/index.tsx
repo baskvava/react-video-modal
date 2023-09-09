@@ -7,7 +7,7 @@ function App() {
   const [isResponsiveOpen, setIsResponsiveOpen] = useState(false);
 
   return (
-    <div className="App">
+    <div className="App" style={{ height: "1800px" }}>
       <div>
         <span>Fixed Width Video</span>
         <button onClick={() => setIsOpen(true)}>Modal</button>

@@ -8,12 +8,11 @@
     "build": "parcel build src/index.html --no-minify --out-dir public"
   },
   "dependencies": {
-    "@baskvava/react-video-modal": "^0.0.13",
     "@parcel/config-default": "^2.9.3",
     "@parcel/core": "^2.9.3",
     "@parcel/transformer-typescript-tsc": "^2.9.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "@types/react": "file:../node_modules/@types/react",
+    "@types/react-dom": "file:../node_modules/@types/react-dom"
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.5",

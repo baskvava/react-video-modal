@@ -6,7 +6,9 @@ This is a react library for video embbeded in modal
 
 ## Installation
 
-npm i @baskvava/react-video-modal
+```bash
+npm install @baskvava/react-video-modal
+```
 
 ## Example
 

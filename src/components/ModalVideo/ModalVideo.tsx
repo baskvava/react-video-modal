@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 
 import "./ModalVideo.css";
@@ -34,17 +34,22 @@ function ModalVideo({
   const videoWidth = width ?? Math.min(widowWidth * widthRatio, MAX_WIDTH);
   const videoHeight = (videoWidth * wRatio) / hRatio;
 
-  const widowDim = useWindowObserver();
-  console.log({ widowDim });
+  useLayoutEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [isOpen]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const handleKeydown = (e: KeyboardEvent) => {
       if (e.keyCode === 27) {
         onClosed();
       }
     };
     const closeModal = (e: MouseEvent) => {
-      if (modalRef.current?.contains(e.target as HTMLElement)) {
+      if (modalRef?.current?.contains(e.target as HTMLElement)) {
         return;
       }
       onClosed();
