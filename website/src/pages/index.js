@@ -22,8 +22,8 @@ const features = [
     imageUrl: 'img/undraw_docusaurus_mountain.svg',
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        React Video Modal was designed from the ground up to be easily installed, lightweight, and
+        used to get your video modal up and running steadly.
       </>
     ),
   },
@@ -32,18 +32,17 @@ const features = [
     imageUrl: 'img/undraw_docusaurus_tree.svg',
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        React Video Modal lets you focus video. Without wasting time to optimize the modal events.
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: 'Powered by React Video Modal',
     imageUrl: 'img/undraw_docusaurus_react.svg',
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Extend or customize your Video Modal layout by reusing React Video Modal. React Video Modal can
+        be extended while reusing the same video content.
       </>
     ),
   },
