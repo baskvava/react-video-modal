@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_baskvava_react_video_modal=self.webpackChunk_baskvava_react_video_modal||[]).push([[700],{5688:a=>{a.exports=JSON.parse('{"label":"hola","permalink":"/blog/tags/hola","allTagsPath":"/blog/tags","count":1}')}}]);

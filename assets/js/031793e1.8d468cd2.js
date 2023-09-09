@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkreact_video_modal_v_2=self.webpackChunkreact_video_modal_v_2||[]).push([[633],{2511:a=>{a.exports=JSON.parse('{"label":"facebook","permalink":"/blog/tags/facebook","allTagsPath":"/blog/tags","count":1}')}}]);

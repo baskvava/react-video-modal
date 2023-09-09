@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_baskvava_react_video_modal=self.webpackChunk_baskvava_react_video_modal||[]).push([[258],{3769:a=>{a.exports=JSON.parse('{"name":"docusaurus-plugin-content-docs","id":"default"}')}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_baskvava_react_video_modal=self.webpackChunk_baskvava_react_video_modal||[]).push([[35],{499:a=>{a.exports=JSON.parse('{"permalink":"/blog/tags/hola","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);
