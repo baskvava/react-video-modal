@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[169],{7912:e=>{e.exports=JSON.parse('{"label":"hello","permalink":"/react-video-modal/blog/tags/hello","allTagsPath":"/react-video-modal/blog/tags","count":2}')}}]);
