@@ -5,10 +5,8 @@
   "scripts": {
     "rollup": "rollup -c --bundleConfigAsCjs"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/baskvava/react-video-modal.git"
-  },
+  "repository": "baskvava/react-video-modal",
+  "homepage": "https://baskvava.github.io/react-video-modal/",
   "keywords": [
     "react",
     "video",
@@ -24,7 +22,6 @@
   "bugs": {
     "url": "https://github.com/baskvava/react-video-modal/issues"
   },
-  "homepage": "https://github.com/baskvava/react-video-modal#readme",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.4",
     "@rollup/plugin-node-resolve": "^15.2.1",
