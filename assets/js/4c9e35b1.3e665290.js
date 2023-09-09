@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkreact_video_modal_v_2=self.webpackChunkreact_video_modal_v_2||[]).push([[35],{499:e=>{e.exports=JSON.parse('{"permalink":"/blog/tags/hola","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);
