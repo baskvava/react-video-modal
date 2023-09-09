@@ -1,6 +1,5 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
-import { useWindowDimensions } from "./useWindowDimensions";
 
 import "./ModalVideo.css";
 import { useWindowObserver } from "./useWidowObserver";
