@@ -1,8 +1,8 @@
-# React-Video-Modal [![NPM Version](https://img.shields.io/badge/npm-v_0.0.17_alpha-blue)](https://www.npmjs.com/package/@baskvava/react-video-modal) ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)
+# React-Video-Modal [![NPM Version](https://img.shields.io/badge/npm-v_0.0.18_alpha-blue)](https://www.npmjs.com/package/@baskvava/react-video-modal) ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)
 
-This is a react library for video embbeded in modal
+> This is a react library for video embbeded in modal
 
-[Demo](https://react-video-modal.vercel.app/)
+**[Documents and Demo](https://react-video-modal.vercel.app/)**
 
 ## Installation
 
