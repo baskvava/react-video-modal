@@ -1,5 +1,5 @@
 import "./ModalVideo.css";
-type Props = {
+interface Props {
     isOpen: boolean;
     onClosed: () => void;
     url: string;
@@ -8,7 +8,7 @@ type Props = {
     width?: number;
     widthRatio?: number;
     ratio?: number[];
-};
+}
 declare function ModalVideo({ isOpen, onClosed, url, title, header, width, widthRatio, // iframe ratio of widow
 ratio, }: Props): import("react/jsx-runtime").JSX.Element | null;
 export default ModalVideo;

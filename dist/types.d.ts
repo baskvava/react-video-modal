@@ -1,6 +1,6 @@
 import * as react_jsx_runtime from 'react/jsx-runtime';
 
-type Props = {
+interface Props {
     isOpen: boolean;
     onClosed: () => void;
     url: string;
@@ -9,8 +9,15 @@ type Props = {
     width?: number;
     widthRatio?: number;
     ratio?: number[];
-};
+}
 declare function ModalVideo({ isOpen, onClosed, url, title, header, width, widthRatio, // iframe ratio of widow
 ratio, }: Props): react_jsx_runtime.JSX.Element | null;
 
-export { ModalVideo };
+interface UseToggleReturnType {
+    isOpen: boolean;
+    toggle: () => void;
+    close: () => void;
+}
+declare function useToggle(): UseToggleReturnType;
+
+export { ModalVideo, useToggle };

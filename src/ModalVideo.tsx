@@ -1,10 +1,10 @@
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 
 import "./ModalVideo.css";
 import { useWindowObserver } from "./useWidowObserver";
 
-type Props = {
+interface Props {
   isOpen: boolean;
   onClosed: () => void;
   url: string;
@@ -13,7 +13,7 @@ type Props = {
   width?: number;
   widthRatio?: number;
   ratio?: number[];
-};
+}
 
 const MAX_WIDTH = 1200;
 
@@ -42,7 +42,7 @@ function ModalVideo({
     }
   }, [isOpen]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const handleKeydown = (e: KeyboardEvent) => {
       if (e.keyCode === 27) {
         onClosed();
@@ -74,7 +74,12 @@ function ModalVideo({
           <div className="modal-container" ref={modalRef}>
             <div className="modal-header-container">
               <div className="modal-header">{header}</div>
-              <button onClick={onClosed}>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  onClosed;
+                }}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   x="0px"

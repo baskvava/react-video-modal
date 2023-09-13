@@ -5,7 +5,7 @@ export function useWindowObserver() {
 
   useLayoutEffect(() => {
     const resizeObserver = new ResizeObserver((event) => {
-      setWindowDim(event[0].contentRect.width ?? 0);
+      setWindowDim(event[0].contentRect.width);
     });
 
     resizeObserver.observe(document.body);
