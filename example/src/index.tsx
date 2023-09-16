@@ -1,13 +1,17 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { ModalVideo, useToggle } from "../../src";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { ModalVideo, useToggle } from '../../src';
 
 function App() {
-  const { isOpen, toggle } = useToggle();
-  const { isOpen: isResponsiveOpen, toggle: isResponsiveToggle } = useToggle();
+  const { isOpen, toggle, close } = useToggle();
+  const {
+    isOpen: isResponsiveOpen,
+    toggle: responsiveToggle,
+    close: responsiveClose
+  } = useToggle();
 
   return (
-    <div className="App" style={{ height: "1800px" }}>
+    <div className="App" style={{ height: '1800px' }}>
       <div>
         <span>Fixed Width Video</span>
         <button onClick={toggle}>Modal</button>
@@ -16,19 +20,19 @@ function App() {
           header="Fixed width Video"
           width={800}
           isOpen={isOpen}
-          onClosed={toggle}
+          onClosed={close}
           url="https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
         />
       </div>
       <div>
         <span>Responsive Width Video</span>
-        <button onClick={isResponsiveToggle}>Modal</button>
+        <button onClick={responsiveToggle}>Modal</button>
         <ModalVideo
           title="video"
           header="Responsive Width Video"
           widthRatio={0.8}
           isOpen={isResponsiveOpen}
-          onClosed={isResponsiveToggle}
+          onClosed={responsiveClose}
           url="https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
         />
       </div>
@@ -37,7 +41,7 @@ function App() {
 }
 
 const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
+  document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>

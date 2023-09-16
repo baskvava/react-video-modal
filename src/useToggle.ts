@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useState } from 'react';
 
 interface UseToggleReturnType {
   isOpen: boolean;
@@ -11,11 +11,11 @@ export function useToggle(): UseToggleReturnType {
 
   const toggle = useCallback(() => {
     setIsOpen(!isOpen);
-  }, [isOpen]);
+  }, [setIsOpen]);
 
   const close = useCallback(() => {
     setIsOpen(false);
-  }, [isOpen]);
+  }, [setIsOpen]);
 
   return { isOpen, toggle, close };
 }
