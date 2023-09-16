@@ -10,6 +10,12 @@
 npm install @baskvava/react-video-modal
 ```
 
+or
+
+```bash
+yarn add @baskvava/react-video-modal
+```
+
 ## Example
 
 ```js
