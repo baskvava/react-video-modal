@@ -13,19 +13,21 @@ npm install @baskvava/react-video-modal
 ## Example
 
 ```js
-import React, { useState } from "react";
-import { ModalVideo } from "@baskvava/react-video-modal";
+import React, { useState } from 'react';
+import { ModalVideo, useToggle } from '@baskvava/react-video-modal';
 
 function App() {
-  const [isOpen, setIsOpen] = useState(false);
+  const { isOpen, toggle, close } = useToggle();
 
   return (
     <div className="App">
-      <button onClick={() => setIsOpen(true)}>Open Modal</button>
+      <button onClick={toggle}>Open Video Modal</button>
       <ModalVideo
-        title="my-first-video"
+        title="video"
+        header="Fixed width Video"
+        width={800}
         isOpen={isOpen}
-        onClosed={() => setIsOpen(false)}
+        onClosed={close}
         url="https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
       />
     </div>

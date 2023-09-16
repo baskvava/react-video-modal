@@ -12,17 +12,12 @@ function UseToogle() {
       <button
         // highlight-next-line
         onClick={toggle}
-        style={{
-          cursor: 'pointer',
-          padding: '0.8rem',
-          fontSize: '18px',
-          marginBottom: '0.8rem',
-        }}>
+        className="v-btn">
         Click Me to Open Video Modal
       </button>
       <ModalVideo
         title="video"
-        header="Fixed width Video"
+        header="useToggle"
         width={800}
         // highlight-next-line
         isOpen={isOpen}

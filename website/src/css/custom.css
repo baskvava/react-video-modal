@@ -35,3 +35,10 @@
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
 }
+
+.v-btn {
+  cursor: pointer;
+  padding: 0.8rem;
+  font-size: 18px;
+  margin-bottom: 0.8rem;
+}

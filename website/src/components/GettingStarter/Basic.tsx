@@ -7,14 +7,7 @@ function Basic() {
   return (
     <div>
       <h2>Basic Video Modal</h2>
-      <button
-        onClick={toggle}
-        style={{
-          cursor: 'pointer',
-          padding: '0.8rem',
-          fontSize: '18px',
-          marginBottom: '0.8rem',
-        }}>
+      <button onClick={toggle} className="v-btn">
         Click Me to Open Video Modal
       </button>
       {/* highlight-start */}
