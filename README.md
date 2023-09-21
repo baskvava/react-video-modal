@@ -1,4 +1,4 @@
-# React-Video-Modal [![NPM Version](https://img.shields.io/badge/npm-v_0.0.22_alpha-blue)](https://www.npmjs.com/package/@baskvava/react-video-modal) ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)
+# React-Video-Modal [![NPM Version](https://img.shields.io/badge/npm-v_0.0.23_alpha-blue)](https://www.npmjs.com/package/@baskvava/react-video-modal) ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)
 
 > This is a react library for video embbeded in modal
 
@@ -19,8 +19,8 @@ yarn add @baskvava/react-video-modal
 ## Example
 
 ```js
-import React, { useState } from 'react';
-import { ModalVideo, useToggle } from '@baskvava/react-video-modal';
+import React, { useState } from "react";
+import { ModalVideo, useToggle } from "@baskvava/react-video-modal";
 
 function App() {
   const { isOpen, toggle, close } = useToggle();
