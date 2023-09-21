@@ -11,7 +11,7 @@ interface Props {
     ratio?: number[];
 }
 declare function ModalVideo({ isOpen, onClosed, url, title, header, width, widthRatio, // iframe ratio of widow
-ratio }: Props): react_jsx_runtime.JSX.Element | null;
+ratio, }: Props): react_jsx_runtime.JSX.Element | null;
 
 interface UseToggleReturnType {
     isOpen: boolean;

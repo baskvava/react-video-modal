@@ -1,8 +1,8 @@
-import { useEffect, useLayoutEffect, useRef } from 'react';
-import { createPortal } from 'react-dom';
+import { useEffect, useLayoutEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 
-import './ModalVideo.css';
-import { useWindowObserver } from './useWidowObserver';
+import "./ModalVideo.css";
+import { useWindowObserver } from "./useWidowObserver";
 
 interface Props {
   isOpen: boolean;
@@ -22,10 +22,10 @@ function ModalVideo({
   onClosed,
   url,
   title,
-  header = 'This is my first video',
+  header = "This is my first video",
   width,
   widthRatio = 0.8, // iframe ratio of widow
-  ratio = [9, 16] // iframe ratio of width, height
+  ratio = [9, 16], // iframe ratio of width, height
 }: Props) {
   const modalRef = useRef<HTMLDivElement | null>(null);
   const { observerWidth } = useWindowObserver();
@@ -36,9 +36,9 @@ function ModalVideo({
 
   useLayoutEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     }
   }, [isOpen]);
 
@@ -55,11 +55,11 @@ function ModalVideo({
       onClosed();
     };
 
-    document.addEventListener('mousedown', closeModal);
-    document.addEventListener('keydown', handleKeydown);
+    document.addEventListener("mousedown", closeModal);
+    document.addEventListener("keydown", handleKeydown);
     return () => {
-      document.removeEventListener('mousedown', closeModal);
-      document.removeEventListener('keydown', handleKeydown);
+      document.removeEventListener("mousedown", closeModal);
+      document.removeEventListener("keydown", handleKeydown);
     };
   }, [onClosed]);
 
@@ -74,10 +74,7 @@ function ModalVideo({
           <div className="modal-container" ref={modalRef}>
             <div className="modal-header-container">
               <div className="modal-header">{header}</div>
-              <button
-                onClick={onClosed
-                }
-              >
+              <button onClick={onClosed}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   x="0px"
