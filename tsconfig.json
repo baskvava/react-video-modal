@@ -21,6 +21,14 @@
     "outDir": "dist",
     "emitDeclarationOnly": true
   },
-  "include": ["src/**/*", "rollup.config.js"],
-  "exclude": ["dist", "node_modules"]
+  "include": ["src/**/*", "example/src/**/*", "rollup.config.js"],
+  "exclude": [
+    "dist",
+    "node_modules",
+    "example/dist",
+    "example/public",
+    "example/.cache",
+    "example/.parcel-cache",
+    "example/node_modules"
+  ]
 }

@@ -2,8 +2,10 @@
   "name": "@baskvava/react-video-modal",
   "version": "0.0.23",
   "description": "This is a react library for video embbeded in modal",
+  "source": "example/src/index.html",
   "scripts": {
-    "build": "rollup -c --bundleConfigAsCjs"
+    "build": "rollup -c --bundleConfigAsCjs",
+    "dev": "parcel example/src/index.html --open"
   },
   "repository": {
     "type": "git",
@@ -43,6 +45,7 @@
     "@rollup/plugin-typescript": "8.3.3",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
+    "parcel": "^2.9.3",
     "postcss": "^8.4.29",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

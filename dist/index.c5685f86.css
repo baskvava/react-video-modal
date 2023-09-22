@@ -1,0 +1,38 @@
+.modal-overlay {
+  background-color: #000000b3;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: fixed;
+  inset: 0;
+}
+
+.modal-container {
+  background-color: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.modal-header-container {
+  justify-content: space-between;
+  padding: 16px;
+  display: flex;
+}
+
+.modal-header-container button {
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.modal-header-container button:hover {
+  cursor: pointer;
+}
+
+.modal-body {
+  width: 100%;
+}
+
+/*# sourceMappingURL=index.c5685f86.css.map */
