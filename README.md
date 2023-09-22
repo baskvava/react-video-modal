@@ -41,3 +41,17 @@ function App() {
 }
 export default App;
 ```
+
+## Local ENV
+
+install the node package
+
+```bash
+yarn install
+```
+
+run example
+
+```bash
+yarn dev
+```

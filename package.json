@@ -5,7 +5,7 @@
   "source": "example/src/index.html",
   "scripts": {
     "build": "rollup -c --bundleConfigAsCjs",
-    "dev": "parcel example/src/index.html --open"
+    "dev": "parcel example/src/index.html --open --dist-dir example/output"
   },
   "repository": {
     "type": "git",
@@ -47,6 +47,7 @@
     "@types/react-dom": "^18.2.7",
     "parcel": "^2.9.3",
     "postcss": "^8.4.29",
+    "process": "^0.11.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rollup": "^3.28.1",
