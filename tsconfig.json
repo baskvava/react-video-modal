@@ -29,6 +29,7 @@
     "example/public",
     "example/.cache",
     "example/.parcel-cache",
-    "example/node_modules"
+    "example/node_modules",
+    ".parcel-cache"
   ]
 }

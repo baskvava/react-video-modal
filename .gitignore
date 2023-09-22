@@ -9,6 +9,9 @@
 # testing
 /coverage
 
+# build
+.parcel-cache
+
 # production
 /build
 /example/.cache
