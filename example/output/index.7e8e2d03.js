@@ -2982,6 +2982,7 @@ function App() {
                         width: 800,
                         isOpen: isOpen,
                         onClosed: close,
+                        autoPlay: false,
                         url: "https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
                     }, void 0, false, {
                         fileName: "example/src/index.tsx",
@@ -3000,7 +3001,7 @@ function App() {
                         children: "Responsive Width Video"
                     }, void 0, false, {
                         fileName: "example/src/index.tsx",
-                        lineNumber: 28,
+                        lineNumber: 29,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -3008,25 +3009,24 @@ function App() {
                         children: "Modal"
                     }, void 0, false, {
                         fileName: "example/src/index.tsx",
-                        lineNumber: 29,
+                        lineNumber: 30,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _src.ModalVideo), {
                         title: "video",
-                        header: "Responsive Width Video",
                         widthRatio: 0.8,
                         isOpen: isResponsiveOpen,
                         onClosed: responsiveClose,
-                        url: "https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                        url: "https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
                     }, void 0, false, {
                         fileName: "example/src/index.tsx",
-                        lineNumber: 30,
+                        lineNumber: 31,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "example/src/index.tsx",
-                lineNumber: 27,
+                lineNumber: 28,
                 columnNumber: 7
             }, this)
         ]
@@ -27273,10 +27273,10 @@ var _modalVideoCss = require("./ModalVideo.css");
 var _useWidowObserver = require("./useWidowObserver");
 var _s = $RefreshSig$();
 const MAX_WIDTH = 1200;
-function ModalVideo({ isOpen = false, onClosed, url, title, header = "This is my first video", width, widthRatio = 0.8, ratio = [
+function ModalVideo({ isOpen = false, onClosed, url, title, header, width, widthRatio = 0.8, ratio = [
     9,
     16
-] }) {
+], autoPlay = true }) {
     _s();
     const modalRef = (0, _react.useRef)(null);
     const { observerWidth } = (0, _useWidowObserver.useWindowObserver)();
@@ -27315,81 +27315,82 @@ function ModalVideo({ isOpen = false, onClosed, url, title, header = "This is my
                 className: "modal-container",
                 ref: modalRef,
                 children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "modal-header-container",
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "modal-header",
-                                children: header
-                            }, void 0, false, {
-                                fileName: "src/ModalVideo.tsx",
-                                lineNumber: 76,
-                                columnNumber: 15
-                            }, this),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                onClick: onClosed,
-                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("svg", {
-                                    xmlns: "http://www.w3.org/2000/svg",
-                                    x: "0px",
-                                    y: "0px",
-                                    width: "20",
-                                    height: "20",
-                                    viewBox: "0 0 30 30",
-                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("path", {
-                                        d: "M 7 4 C 6.744125 4 6.4879687 4.0974687 6.2929688 4.2929688 L 4.2929688 6.2929688 C 3.9019687 6.6839688 3.9019687 7.3170313 4.2929688 7.7070312 L 11.585938 15 L 4.2929688 22.292969 C 3.9019687 22.683969 3.9019687 23.317031 4.2929688 23.707031 L 6.2929688 25.707031 C 6.6839688 26.098031 7.3170313 26.098031 7.7070312 25.707031 L 15 18.414062 L 22.292969 25.707031 C 22.682969 26.098031 23.317031 26.098031 23.707031 25.707031 L 25.707031 23.707031 C 26.098031 23.316031 26.098031 22.682969 25.707031 22.292969 L 18.414062 15 L 25.707031 7.7070312 C 26.098031 7.3170312 26.098031 6.6829688 25.707031 6.2929688 L 23.707031 4.2929688 C 23.316031 3.9019687 22.682969 3.9019687 22.292969 4.2929688 L 15 11.585938 L 7.7070312 4.2929688 C 7.5115312 4.0974687 7.255875 4 7 4 z"
+                    header && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            className: "modal-header-container",
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "modal-header",
+                                    children: header
+                                }, void 0, false, {
+                                    fileName: "src/ModalVideo.tsx",
+                                    lineNumber: 89,
+                                    columnNumber: 19
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                    onClick: onClosed,
+                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("svg", {
+                                        xmlns: "http://www.w3.org/2000/svg",
+                                        x: "0px",
+                                        y: "0px",
+                                        width: "20",
+                                        height: "20",
+                                        viewBox: "0 0 30 30",
+                                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("path", {
+                                            d: "M 7 4 C 6.744125 4 6.4879687 4.0974687 6.2929688 4.2929688 L 4.2929688 6.2929688 C 3.9019687 6.6839688 3.9019687 7.3170313 4.2929688 7.7070312 L 11.585938 15 L 4.2929688 22.292969 C 3.9019687 22.683969 3.9019687 23.317031 4.2929688 23.707031 L 6.2929688 25.707031 C 6.6839688 26.098031 7.3170313 26.098031 7.7070312 25.707031 L 15 18.414062 L 22.292969 25.707031 C 22.682969 26.098031 23.317031 26.098031 23.707031 25.707031 L 25.707031 23.707031 C 26.098031 23.316031 26.098031 22.682969 25.707031 22.292969 L 18.414062 15 L 25.707031 7.7070312 C 26.098031 7.3170312 26.098031 6.6829688 25.707031 6.2929688 L 23.707031 4.2929688 C 23.316031 3.9019687 22.682969 3.9019687 22.292969 4.2929688 L 15 11.585938 L 7.7070312 4.2929688 C 7.5115312 4.0974687 7.255875 4 7 4 z"
+                                        }, void 0, false, {
+                                            fileName: "src/ModalVideo.tsx",
+                                            lineNumber: 99,
+                                            columnNumber: 23
+                                        }, this)
                                     }, void 0, false, {
                                         fileName: "src/ModalVideo.tsx",
-                                        lineNumber: 86,
-                                        columnNumber: 19
+                                        lineNumber: 91,
+                                        columnNumber: 21
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "src/ModalVideo.tsx",
-                                    lineNumber: 78,
-                                    columnNumber: 17
+                                    lineNumber: 90,
+                                    columnNumber: 19
                                 }, this)
-                            }, void 0, false, {
-                                fileName: "src/ModalVideo.tsx",
-                                lineNumber: 77,
-                                columnNumber: 15
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/ModalVideo.tsx",
-                        lineNumber: 75,
-                        columnNumber: 13
-                    }, this),
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/ModalVideo.tsx",
+                            lineNumber: 88,
+                            columnNumber: 17
+                        }, this)
+                    }, void 0, false),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                         className: "modal-body",
                         style: {
-                            height: Math.floor(videoHeight)
+                            height: Math.floor(videoHeight),
+                            width: videoWidth
                         },
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("iframe", {
                             title: title,
                             width: videoWidth,
                             height: videoHeight,
                             src: url,
-                            frameBorder: "0",
-                            allowFullScreen: true,
-                            allow: "autoplay"
+                            allow: `${autoPlay && "autoplay"}`
                         }, void 0, false, {
                             fileName: "src/ModalVideo.tsx",
-                            lineNumber: 94,
+                            lineNumber: 109,
                             columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "src/ModalVideo.tsx",
-                        lineNumber: 90,
+                        lineNumber: 105,
                         columnNumber: 13
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/ModalVideo.tsx",
-                lineNumber: 74,
+                lineNumber: 85,
                 columnNumber: 11
             }, this)
         }, void 0, false, {
             fileName: "src/ModalVideo.tsx",
-            lineNumber: 73,
+            lineNumber: 84,
             columnNumber: 9
         }, this), document.body)
     }, void 0, false);

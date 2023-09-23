@@ -39,3 +39,7 @@
 .modal-body {
   width: 100%;
 }
+
+iframe {
+  border: none;
+}

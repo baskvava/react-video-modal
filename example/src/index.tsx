@@ -21,6 +21,7 @@ function App() {
           width={800}
           isOpen={isOpen}
           onClosed={close}
+          autoPlay={false}
           url="https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
         />
       </div>
@@ -29,11 +30,10 @@ function App() {
         <button onClick={responsiveToggle}>Modal</button>
         <ModalVideo
           title="video"
-          header="Responsive Width Video"
           widthRatio={0.8}
           isOpen={isResponsiveOpen}
           onClosed={responsiveClose}
-          url="https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+          url="https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
         />
       </div>
     </div>
