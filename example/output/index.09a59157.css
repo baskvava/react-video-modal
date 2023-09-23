@@ -32,10 +32,6 @@
   padding: 0;
 }
 
-.no-header .no-header-btn button svg {
-  fill: "#ffffff";
-}
-
 .modal-header-container {
   justify-content: space-between;
   padding: 16px;

@@ -21,33 +21,32 @@
 
 .no-header {
   position: relative;
+}
 
-  .no-header-btn {
-    position: absolute;
-    right: -28px;
-    top: 0px;
+.no-header .no-header-btn {
+  position: absolute;
+  right: -28px;
+  top: 0px;
+}
 
-    button {
-      padding: 0;
-      margin: 0;
-      border: none;
-      background: none;
-      color: white;
-    }
-  }
+.no-header .no-header-btn button {
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
 }
 
 .modal-header-container {
   display: flex;
   justify-content: space-between;
   padding: 16px;
+}
 
-  button {
-    padding: 0;
-    margin: 0;
-    border: none;
-    background: none;
-  }
+.modal-header-container button {
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
 }
 
 .modal-body {
