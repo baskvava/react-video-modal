@@ -27271,6 +27271,8 @@ var _react = require("react");
 var _reactDom = require("react-dom");
 var _modalVideoCss = require("./ModalVideo.css");
 var _useWidowObserver = require("./useWidowObserver");
+var _closeBtn = require("./CloseBtn");
+var _closeBtnDefault = parcelHelpers.interopDefault(_closeBtn);
 var _s = $RefreshSig$();
 const MAX_WIDTH = 1200;
 function ModalVideo({ isOpen = false, onClosed, url, title, header, width, widthRatio = 0.8, ratio = [
@@ -27312,10 +27314,10 @@ function ModalVideo({ isOpen = false, onClosed, url, title, header, width, width
         children: /*#__PURE__*/ (0, _reactDom.createPortal)(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             className: "modal-overlay",
             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "modal-container",
+                className: `${header ? "modal-container" : "no-header"}`,
                 ref: modalRef,
                 children: [
-                    header && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                    header ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                             className: "modal-header-container",
                             children: [
@@ -27324,42 +27326,37 @@ function ModalVideo({ isOpen = false, onClosed, url, title, header, width, width
                                     children: header
                                 }, void 0, false, {
                                     fileName: "src/ModalVideo.tsx",
-                                    lineNumber: 89,
+                                    lineNumber: 93,
                                     columnNumber: 19
                                 }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                    onClick: onClosed,
-                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("svg", {
-                                        xmlns: "http://www.w3.org/2000/svg",
-                                        x: "0px",
-                                        y: "0px",
-                                        width: "20",
-                                        height: "20",
-                                        viewBox: "0 0 30 30",
-                                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("path", {
-                                            d: "M 7 4 C 6.744125 4 6.4879687 4.0974687 6.2929688 4.2929688 L 4.2929688 6.2929688 C 3.9019687 6.6839688 3.9019687 7.3170313 4.2929688 7.7070312 L 11.585938 15 L 4.2929688 22.292969 C 3.9019687 22.683969 3.9019687 23.317031 4.2929688 23.707031 L 6.2929688 25.707031 C 6.6839688 26.098031 7.3170313 26.098031 7.7070312 25.707031 L 15 18.414062 L 22.292969 25.707031 C 22.682969 26.098031 23.317031 26.098031 23.707031 25.707031 L 25.707031 23.707031 C 26.098031 23.316031 26.098031 22.682969 25.707031 22.292969 L 18.414062 15 L 25.707031 7.7070312 C 26.098031 7.3170312 26.098031 6.6829688 25.707031 6.2929688 L 23.707031 4.2929688 C 23.316031 3.9019687 22.682969 3.9019687 22.292969 4.2929688 L 15 11.585938 L 7.7070312 4.2929688 C 7.5115312 4.0974687 7.255875 4 7 4 z"
-                                        }, void 0, false, {
-                                            fileName: "src/ModalVideo.tsx",
-                                            lineNumber: 99,
-                                            columnNumber: 23
-                                        }, this)
-                                    }, void 0, false, {
-                                        fileName: "src/ModalVideo.tsx",
-                                        lineNumber: 91,
-                                        columnNumber: 21
-                                    }, this)
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _closeBtnDefault.default), {
+                                    primary: true,
+                                    onClosed: onClosed
                                 }, void 0, false, {
                                     fileName: "src/ModalVideo.tsx",
-                                    lineNumber: 90,
+                                    lineNumber: 94,
                                     columnNumber: 19
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/ModalVideo.tsx",
-                            lineNumber: 88,
+                            lineNumber: 92,
                             columnNumber: 17
                         }, this)
-                    }, void 0, false),
+                    }, void 0, false) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "no-header-btn",
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _closeBtnDefault.default), {
+                            onClosed: onClosed
+                        }, void 0, false, {
+                            fileName: "src/ModalVideo.tsx",
+                            lineNumber: 99,
+                            columnNumber: 17
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "src/ModalVideo.tsx",
+                        lineNumber: 98,
+                        columnNumber: 15
+                    }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                         className: "modal-body",
                         style: {
@@ -27374,23 +27371,23 @@ function ModalVideo({ isOpen = false, onClosed, url, title, header, width, width
                             allow: `${autoPlay && "autoplay"}`
                         }, void 0, false, {
                             fileName: "src/ModalVideo.tsx",
-                            lineNumber: 109,
+                            lineNumber: 106,
                             columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "src/ModalVideo.tsx",
-                        lineNumber: 105,
+                        lineNumber: 102,
                         columnNumber: 13
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/ModalVideo.tsx",
-                lineNumber: 85,
+                lineNumber: 86,
                 columnNumber: 11
             }, this)
         }, void 0, false, {
             fileName: "src/ModalVideo.tsx",
-            lineNumber: 84,
+            lineNumber: 85,
             columnNumber: 9
         }, this), document.body)
     }, void 0, false);
@@ -27410,7 +27407,7 @@ $RefreshReg$(_c, "ModalVideo");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom":"j6uA9","./ModalVideo.css":"c97Lh","./useWidowObserver":"9zpqg","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"c97Lh":[function() {},{}],"9zpqg":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom":"j6uA9","./ModalVideo.css":"c97Lh","./useWidowObserver":"9zpqg","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./CloseBtn":"cvsPn"}],"c97Lh":[function() {},{}],"9zpqg":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$3c4a = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -27610,7 +27607,57 @@ function registerExportsForReactRefresh(module1) {
     }
 }
 
-},{"7422ead32dcc1e6b":"786KC"}],"8X0bq":[function(require,module,exports) {
+},{"7422ead32dcc1e6b":"786KC"}],"cvsPn":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$1010 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$1010.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+function CloseBtn({ onClosed, // true => black, false => white
+primary = false }) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+        onClick: onClosed,
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("svg", {
+            xmlns: "http://www.w3.org/2000/svg",
+            x: "0px",
+            y: "0px",
+            width: "20",
+            height: "20",
+            viewBox: "0 0 30 30",
+            fill: `${primary ? "#000000" : "#ffffff"}`,
+            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("path", {
+                d: "M 7 4 C 6.744125 4 6.4879687 4.0974687 6.2929688 4.2929688 L 4.2929688 6.2929688 C 3.9019687 6.6839688 3.9019687 7.3170313 4.2929688 7.7070312 L 11.585938 15 L 4.2929688 22.292969 C 3.9019687 22.683969 3.9019687 23.317031 4.2929688 23.707031 L 6.2929688 25.707031 C 6.6839688 26.098031 7.3170313 26.098031 7.7070312 25.707031 L 15 18.414062 L 22.292969 25.707031 C 22.682969 26.098031 23.317031 26.098031 23.707031 25.707031 L 25.707031 23.707031 C 26.098031 23.316031 26.098031 22.682969 25.707031 22.292969 L 18.414062 15 L 25.707031 7.7070312 C 26.098031 7.3170312 26.098031 6.6829688 25.707031 6.2929688 L 23.707031 4.2929688 C 23.316031 3.9019687 22.682969 3.9019687 22.292969 4.2929688 L 15 11.585938 L 7.7070312 4.2929688 C 7.5115312 4.0974687 7.255875 4 7 4 z"
+            }, void 0, false, {
+                fileName: "src/CloseBtn.tsx",
+                lineNumber: 20,
+                columnNumber: 9
+            }, this)
+        }, void 0, false, {
+            fileName: "src/CloseBtn.tsx",
+            lineNumber: 11,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "src/CloseBtn.tsx",
+        lineNumber: 10,
+        columnNumber: 5
+    }, this);
+}
+_c = CloseBtn;
+exports.default = CloseBtn;
+var _c;
+$RefreshReg$(_c, "CloseBtn");
+
+  $parcel$ReactRefreshHelpers$1010.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"8X0bq":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$cdcb = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;

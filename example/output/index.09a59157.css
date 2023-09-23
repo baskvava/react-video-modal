@@ -14,6 +14,28 @@
   overflow: hidden;
 }
 
+.no-header {
+  position: relative;
+}
+
+.no-header .no-header-btn {
+  position: absolute;
+  top: 0;
+  right: -28px;
+}
+
+.no-header .no-header-btn button {
+  color: #fff;
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.no-header .no-header-btn button svg {
+  fill: "#ffffff";
+}
+
 .modal-header-container {
   justify-content: space-between;
   padding: 16px;
@@ -27,16 +49,16 @@
   padding: 0;
 }
 
-.modal-header-container button:hover {
-  cursor: pointer;
-}
-
 .modal-body {
   width: 100%;
 }
 
 iframe {
   border: none;
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=index.09a59157.css.map */
