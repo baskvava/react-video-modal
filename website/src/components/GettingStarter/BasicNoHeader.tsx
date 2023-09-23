@@ -1,28 +1,26 @@
 import React from 'react';
 import {ModalVideo, useToggle} from '@baskvava/react-video-modal';
 
-function Basic() {
+function BasicNoHeader() {
   const {isOpen, toggle, close} = useToggle();
 
   return (
     <div>
-      <h2>Video Modal with Header</h2>
+      <h2>Basic Video Modal</h2>
       <button onClick={toggle} className="v-btn">
         Click Me to Open Video Modal
       </button>
-
+      {/* highlight-start */}
       <ModalVideo
         title="video"
-        /* highlight-start */
-        header="This is my first video"
-        /* highlight-end */
         width={800}
         isOpen={isOpen}
         onClosed={close}
         url="https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
       />
+      {/* highlight-end */}
     </div>
   );
 }
 
-export default Basic;
+export default BasicNoHeader;

@@ -8,7 +8,7 @@ interface Props {
     width?: number;
     widthRatio?: number;
     ratio?: number[];
+    autoPlay?: boolean;
 }
-declare function ModalVideo({ isOpen, onClosed, url, title, header, width, widthRatio, // iframe ratio of widow
-ratio, }: Props): import("react/jsx-runtime").JSX.Element | null;
+declare function ModalVideo({ isOpen, onClosed, url, title, header, width, widthRatio, ratio, autoPlay, }: Props): import("react/jsx-runtime").JSX.Element | null;
 export default ModalVideo;
