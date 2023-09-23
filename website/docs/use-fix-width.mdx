@@ -1,0 +1,55 @@
+import rawFiexdWidth from '!!raw-loader!@site/src/components/FixedWidth/FixedWidth';
+import rawResponsive from '!!raw-loader!@site/src/components/FixedWidth/Responsive';
+import FixedWidth from '@site/src/components/FixedWidth/FixedWidth';
+import Responsive from '@site/src/components/FixedWidth/Responsive';
+import CodeBlock from '@theme/CodeBlock';
+
+# Fixed Width
+
+If want to have fixed the video modal, there are two props to set up it for your video modal
+
+## Props
+
+```jsx
+width: number; // default is undefined
+responsive: boolean; // default is false
+```
+
+## Fixed Width
+
+Only set up fixed width without responsive. When change the widow size will not change the video modal width.
+
+> How to do if I also want it with responsive? Don't worried about it! Let's jump to next example: [Responsive](#responsive)
+
+### Usage
+
+<FixedWidth />
+
+<CodeBlock
+  language="jsx"
+  title="/src/components/FixedWidth/FixedWidth.jsx"
+  >
+  {rawFiexdWidth}
+
+</CodeBlock>
+
+## Responsive
+
+Set up a fixed width video modal that is still responsive
+
+> Note: The Responsive feature used with fixed width only supports for the widow size smaller than fixed width setting. If the window size larger than fixed width setting, only display fixed width size
+
+Try to change widow size to test the feature when open your modal
+
+### Usage
+
+<Responsive />
+
+<CodeBlock
+  language="jsx"
+  title="/src/components/FixedWidth/Responsive.jsx"
+  >
+  {rawResponsive}
+
+</CodeBlock>
+```

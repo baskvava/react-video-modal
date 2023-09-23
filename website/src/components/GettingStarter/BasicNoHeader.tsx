@@ -10,13 +10,14 @@ function BasicNoHeader() {
       <button onClick={toggle} className="v-btn">
         Click Me to Open Video Modal
       </button>
+
       {/* highlight-start */}
       <ModalVideo
         title="video"
         width={800}
         isOpen={isOpen}
         onClosed={close}
-        url="https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+        url="https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
       />
       {/* highlight-end */}
     </div>

@@ -19,6 +19,7 @@ function App() {
           title="video"
           header="Fixed width Video"
           width={800}
+          responsive
           isOpen={isOpen}
           onClosed={close}
           autoPlay={false}

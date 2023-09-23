@@ -2980,6 +2980,7 @@ function App() {
                         title: "video",
                         header: "Fixed width Video",
                         width: 800,
+                        responsive: true,
                         isOpen: isOpen,
                         onClosed: close,
                         autoPlay: false,
@@ -3001,7 +3002,7 @@ function App() {
                         children: "Responsive Width Video"
                     }, void 0, false, {
                         fileName: "example/src/index.tsx",
-                        lineNumber: 29,
+                        lineNumber: 30,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -3009,7 +3010,7 @@ function App() {
                         children: "Modal"
                     }, void 0, false, {
                         fileName: "example/src/index.tsx",
-                        lineNumber: 30,
+                        lineNumber: 31,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _src.ModalVideo), {
@@ -3020,13 +3021,13 @@ function App() {
                         url: "https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
                     }, void 0, false, {
                         fileName: "example/src/index.tsx",
-                        lineNumber: 31,
+                        lineNumber: 32,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "example/src/index.tsx",
-                lineNumber: 28,
+                lineNumber: 29,
                 columnNumber: 7
             }, this)
         ]
@@ -3047,12 +3048,12 @@ const root = (0, _clientDefault.default).createRoot(document.getElementById("roo
 root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactDefault.default).StrictMode, {
     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(App, {}, void 0, false, {
         fileName: "example/src/index.tsx",
-        lineNumber: 48,
+        lineNumber: 49,
         columnNumber: 5
     }, undefined)
 }, void 0, false, {
     fileName: "example/src/index.tsx",
-    lineNumber: 47,
+    lineNumber: 48,
     columnNumber: 3
 }, undefined));
 var _c;
@@ -27275,16 +27276,23 @@ var _closeBtn = require("./CloseBtn");
 var _closeBtnDefault = parcelHelpers.interopDefault(_closeBtn);
 var _s = $RefreshSig$();
 const MAX_WIDTH = 1200;
-function ModalVideo({ isOpen = false, onClosed, url, title, header, width, widthRatio = 0.8, ratio = [
+const DEFAULT_WIDTH_RATIO = 0.8;
+const DEFAULT_RATIO = [
     9,
     16
-], autoPlay = true }) {
+];
+function ModalVideo({ isOpen = false, onClosed, url, title, header, maxWidth = MAX_WIDTH, width, responsive: isResponsive = false, widthRatio = DEFAULT_WIDTH_RATIO, ratio = DEFAULT_RATIO, autoPlay = true }) {
     _s();
     const modalRef = (0, _react.useRef)(null);
     const { observerWidth } = (0, _useWidowObserver.useWindowObserver)();
     const [wRatio, hRatio] = ratio;
     const widowWidth = observerWidth * widthRatio;
-    const videoWidth = width ?? Math.min(widowWidth * widthRatio, MAX_WIDTH);
+    // Default MAX_WIDTH is 1200px. Discard maxWidth, if larger than it
+    const _maxWidth = Math.min(MAX_WIDTH, maxWidth);
+    // 1. If set fix width, use it.
+    // 2. If set fix width and responsive, set it width reponsive ration (only smaller than it)
+    // 3. Otherwise, use responsive width, maximum is MAX_WIDTH
+    const videoWidth = width ? isResponsive ? Math.min(widowWidth, width) : width : Math.min(widowWidth, _maxWidth);
     const videoHeight = videoWidth * wRatio / hRatio;
     (0, _react.useLayoutEffect)(()=>{
         if (isOpen) document.body.style.overflow = "hidden";
@@ -27326,7 +27334,7 @@ function ModalVideo({ isOpen = false, onClosed, url, title, header, width, width
                                     children: header
                                 }, void 0, false, {
                                     fileName: "src/ModalVideo.tsx",
-                                    lineNumber: 93,
+                                    lineNumber: 112,
                                     columnNumber: 19
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _closeBtnDefault.default), {
@@ -27334,13 +27342,13 @@ function ModalVideo({ isOpen = false, onClosed, url, title, header, width, width
                                     onClosed: onClosed
                                 }, void 0, false, {
                                     fileName: "src/ModalVideo.tsx",
-                                    lineNumber: 94,
+                                    lineNumber: 113,
                                     columnNumber: 19
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/ModalVideo.tsx",
-                            lineNumber: 92,
+                            lineNumber: 111,
                             columnNumber: 17
                         }, this)
                     }, void 0, false) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27349,12 +27357,12 @@ function ModalVideo({ isOpen = false, onClosed, url, title, header, width, width
                             onClosed: onClosed
                         }, void 0, false, {
                             fileName: "src/ModalVideo.tsx",
-                            lineNumber: 99,
+                            lineNumber: 118,
                             columnNumber: 17
                         }, this)
                     }, void 0, false, {
                         fileName: "src/ModalVideo.tsx",
-                        lineNumber: 98,
+                        lineNumber: 117,
                         columnNumber: 15
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27371,23 +27379,23 @@ function ModalVideo({ isOpen = false, onClosed, url, title, header, width, width
                             allow: `${autoPlay && "autoplay"}`
                         }, void 0, false, {
                             fileName: "src/ModalVideo.tsx",
-                            lineNumber: 106,
+                            lineNumber: 125,
                             columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "src/ModalVideo.tsx",
-                        lineNumber: 102,
+                        lineNumber: 121,
                         columnNumber: 13
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/ModalVideo.tsx",
-                lineNumber: 86,
+                lineNumber: 105,
                 columnNumber: 11
             }, this)
         }, void 0, false, {
             fileName: "src/ModalVideo.tsx",
-            lineNumber: 85,
+            lineNumber: 104,
             columnNumber: 9
         }, this), document.body)
     }, void 0, false);

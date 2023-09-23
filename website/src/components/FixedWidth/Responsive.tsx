@@ -1,12 +1,12 @@
 import React from 'react';
 import {ModalVideo, useToggle} from '@baskvava/react-video-modal';
 
-function Basic() {
+function Responsive() {
   const {isOpen, toggle, close} = useToggle();
 
   return (
     <div>
-      <h2>Video Modal with Header</h2>
+      <h2>Fixed Width with Responsive Example</h2>
 
       <button onClick={toggle} className="v-btn">
         Click Me to Open Video Modal
@@ -14,16 +14,15 @@ function Basic() {
 
       <ModalVideo
         title="video"
-        /* highlight-start */
-        header="This is my first video"
-        /* highlight-end */
         width={800}
+        // highlight-next-line
+        responsive
         isOpen={isOpen}
         onClosed={close}
-        url="https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+        url="https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
       />
     </div>
   );
 }
 
-export default Basic;
+export default Responsive;

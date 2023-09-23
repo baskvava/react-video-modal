@@ -16,9 +16,14 @@ interface Props {
   title: string;
   // set modal header
   header?: string | JSX.Element;
-  // set fix video with
+  // set max width number, default max is 1200
+  // Note: could be improve to adaptive different device or larger monitor
+  maxWidth?: number;
+  // set fixed video width
   width?: number;
-  // iframe ratio of widow
+  // use with fixed width
+  responsive?: boolean;
+  // iframe ratio of window
   widthRatio?: number;
   // iframe ratio of width, height
   ratio?: number[];
@@ -27,6 +32,8 @@ interface Props {
 }
 
 const MAX_WIDTH = 1200;
+const DEFAULT_WIDTH_RATIO = 0.8;
+const DEFAULT_RATIO = [9, 16];
 
 function ModalVideo({
   isOpen = false,
@@ -34,16 +41,28 @@ function ModalVideo({
   url,
   title,
   header,
+  maxWidth = MAX_WIDTH,
   width,
-  widthRatio = 0.8,
-  ratio = [9, 16],
+  responsive: isResponsive = false,
+  widthRatio = DEFAULT_WIDTH_RATIO,
+  ratio = DEFAULT_RATIO,
   autoPlay = true,
 }: Props) {
   const modalRef = useRef<HTMLDivElement | null>(null);
   const { observerWidth } = useWindowObserver();
   const [wRatio, hRatio] = ratio;
   const widowWidth = observerWidth * widthRatio;
-  const videoWidth = width ?? Math.min(widowWidth * widthRatio, MAX_WIDTH);
+
+  // Default MAX_WIDTH is 1200px. Discard maxWidth, if larger than it
+  const _maxWidth = Math.min(MAX_WIDTH, maxWidth);
+  // 1. If set fix width, use it.
+  // 2. If set fix width and responsive, set it width reponsive ration (only smaller than it)
+  // 3. Otherwise, use responsive width, maximum is MAX_WIDTH
+  const videoWidth = width
+    ? isResponsive
+      ? Math.min(widowWidth, width)
+      : width
+    : Math.min(widowWidth, _maxWidth);
   const videoHeight = (videoWidth * wRatio) / hRatio;
 
   useLayoutEffect(() => {

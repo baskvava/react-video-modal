@@ -1,12 +1,12 @@
 import React from 'react';
 import {ModalVideo, useToggle} from '@baskvava/react-video-modal';
 
-function Basic() {
+function FixedWidth() {
   const {isOpen, toggle, close} = useToggle();
 
   return (
     <div>
-      <h2>Video Modal with Header</h2>
+      <h2>Fixed Width Example</h2>
 
       <button onClick={toggle} className="v-btn">
         Click Me to Open Video Modal
@@ -14,9 +14,8 @@ function Basic() {
 
       <ModalVideo
         title="video"
-        /* highlight-start */
-        header="This is my first video"
-        /* highlight-end */
+        header="Fixed Width Video Modal"
+        // highlight-next-line
         width={800}
         isOpen={isOpen}
         onClosed={close}
@@ -26,4 +25,4 @@ function Basic() {
   );
 }
 
-export default Basic;
+export default FixedWidth;
