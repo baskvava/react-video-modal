@@ -12,8 +12,10 @@ interface Props {
     widthRatio?: number;
     ratio?: number[];
     autoPlay?: boolean;
+    type?: "video" | "iframe";
+    controls?: "custom" | "default" | "hidden";
 }
-declare function ModalVideo({ isOpen, onClosed, url, title, header, maxWidth, width, responsive: isResponsive, widthRatio, ratio, autoPlay, }: Props): react_jsx_runtime.JSX.Element | null;
+declare function ModalVideo({ isOpen, onClosed, url, title, header, maxWidth, width, responsive: isResponsive, widthRatio, ratio, autoPlay, type, controls, }: Props): react_jsx_runtime.JSX.Element | null;
 
 interface UseToggleReturnType {
     isOpen: boolean;

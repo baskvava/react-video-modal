@@ -2984,7 +2984,6 @@ function App() {
                         isOpen: isOpen,
                         onClosed: close,
                         autoPlay: true,
-                        // controls="custom"
                         url: "https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
                     }, void 0, false, {
                         fileName: "example/src/index.tsx",
@@ -3003,7 +3002,7 @@ function App() {
                         children: "Responsive Width Video"
                     }, void 0, false, {
                         fileName: "example/src/index.tsx",
-                        lineNumber: 31,
+                        lineNumber: 30,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -3011,7 +3010,7 @@ function App() {
                         children: "Modal"
                     }, void 0, false, {
                         fileName: "example/src/index.tsx",
-                        lineNumber: 32,
+                        lineNumber: 31,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _src.ModalVideo), {
@@ -3022,13 +3021,13 @@ function App() {
                         url: "https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
                     }, void 0, false, {
                         fileName: "example/src/index.tsx",
-                        lineNumber: 33,
+                        lineNumber: 32,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "example/src/index.tsx",
-                lineNumber: 30,
+                lineNumber: 29,
                 columnNumber: 7
             }, this)
         ]
@@ -3049,12 +3048,12 @@ const root = (0, _clientDefault.default).createRoot(document.getElementById("roo
 root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactDefault.default).StrictMode, {
     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(App, {}, void 0, false, {
         fileName: "example/src/index.tsx",
-        lineNumber: 50,
+        lineNumber: 49,
         columnNumber: 5
     }, undefined)
 }, void 0, false, {
     fileName: "example/src/index.tsx",
-    lineNumber: 49,
+    lineNumber: 48,
     columnNumber: 3
 }, undefined));
 var _c;
@@ -27370,7 +27369,7 @@ type = "video", controls = "custom" }) {
                                     children: header
                                 }, void 0, false, {
                                     fileName: "src/ModalVideo.tsx",
-                                    lineNumber: 157,
+                                    lineNumber: 155,
                                     columnNumber: 19
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _closeBtnDefault.default), {
@@ -27378,13 +27377,13 @@ type = "video", controls = "custom" }) {
                                     onClosed: onClosed
                                 }, void 0, false, {
                                     fileName: "src/ModalVideo.tsx",
-                                    lineNumber: 158,
+                                    lineNumber: 156,
                                     columnNumber: 19
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/ModalVideo.tsx",
-                            lineNumber: 156,
+                            lineNumber: 154,
                             columnNumber: 17
                         }, this)
                     }, void 0, false) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27393,12 +27392,12 @@ type = "video", controls = "custom" }) {
                             onClosed: onClosed
                         }, void 0, false, {
                             fileName: "src/ModalVideo.tsx",
-                            lineNumber: 163,
+                            lineNumber: 161,
                             columnNumber: 17
                         }, this)
                     }, void 0, false, {
                         fileName: "src/ModalVideo.tsx",
-                        lineNumber: 162,
+                        lineNumber: 160,
                         columnNumber: 15
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27422,12 +27421,12 @@ type = "video", controls = "custom" }) {
                                         type: "video/mp4"
                                     }, void 0, false, {
                                         fileName: "src/ModalVideo.tsx",
-                                        lineNumber: 186,
+                                        lineNumber: 184,
                                         columnNumber: 21
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "src/ModalVideo.tsx",
-                                    lineNumber: 175,
+                                    lineNumber: 173,
                                     columnNumber: 19
                                 }, this),
                                 controls === "custom" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27450,12 +27449,12 @@ type = "video", controls = "custom" }) {
                                                     },
                                                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _classicBtnDefault1.default), {}, void 0, false, {
                                                         fileName: "src/ModalVideo.tsx",
-                                                        lineNumber: 209,
+                                                        lineNumber: 207,
                                                         columnNumber: 29
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "src/ModalVideo.tsx",
-                                                    lineNumber: 201,
+                                                    lineNumber: 199,
                                                     columnNumber: 27
                                                 }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                                                     className: "start",
@@ -27466,12 +27465,12 @@ type = "video", controls = "custom" }) {
                                                     },
                                                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _classicBtnDefault.default), {}, void 0, false, {
                                                         fileName: "src/ModalVideo.tsx",
-                                                        lineNumber: 220,
+                                                        lineNumber: 218,
                                                         columnNumber: 29
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "src/ModalVideo.tsx",
-                                                    lineNumber: 212,
+                                                    lineNumber: 210,
                                                     columnNumber: 27
                                                 }, this),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -27485,13 +27484,13 @@ type = "video", controls = "custom" }) {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "src/ModalVideo.tsx",
-                                                    lineNumber: 224,
+                                                    lineNumber: 222,
                                                     columnNumber: 25
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/ModalVideo.tsx",
-                                            lineNumber: 191,
+                                            lineNumber: 189,
                                             columnNumber: 23
                                         }, this),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27516,12 +27515,12 @@ type = "video", controls = "custom" }) {
                                                 }
                                             }, void 0, false, {
                                                 fileName: "src/ModalVideo.tsx",
-                                                lineNumber: 246,
+                                                lineNumber: 244,
                                                 columnNumber: 27
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "src/ModalVideo.tsx",
-                                            lineNumber: 237,
+                                            lineNumber: 235,
                                             columnNumber: 23
                                         }, this),
                                         isMuted ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27537,12 +27536,12 @@ type = "video", controls = "custom" }) {
                                             },
                                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _classicBtnDefault2.default), {}, void 0, false, {
                                                 fileName: "src/ModalVideo.tsx",
-                                                lineNumber: 278,
+                                                lineNumber: 276,
                                                 columnNumber: 27
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "src/ModalVideo.tsx",
-                                            lineNumber: 266,
+                                            lineNumber: 264,
                                             columnNumber: 25
                                         }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                                             className: "start",
@@ -27557,12 +27556,12 @@ type = "video", controls = "custom" }) {
                                             },
                                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _classicBtnDefault3.default), {}, void 0, false, {
                                                 fileName: "src/ModalVideo.tsx",
-                                                lineNumber: 293,
+                                                lineNumber: 291,
                                                 columnNumber: 27
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "src/ModalVideo.tsx",
-                                            lineNumber: 281,
+                                            lineNumber: 279,
                                             columnNumber: 25
                                         }, this),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27583,24 +27582,24 @@ type = "video", controls = "custom" }) {
                                                 }
                                             }, void 0, false, {
                                                 fileName: "src/ModalVideo.tsx",
-                                                lineNumber: 298,
+                                                lineNumber: 296,
                                                 columnNumber: 25
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "src/ModalVideo.tsx",
-                                            lineNumber: 297,
+                                            lineNumber: 295,
                                             columnNumber: 23
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/ModalVideo.tsx",
-                                    lineNumber: 189,
+                                    lineNumber: 187,
                                     columnNumber: 21
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/ModalVideo.tsx",
-                            lineNumber: 171,
+                            lineNumber: 169,
                             columnNumber: 17
                         }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("iframe", {
                             title: title,
@@ -27610,23 +27609,23 @@ type = "video", controls = "custom" }) {
                             allow: `${autoPlay && "autoplay"}`
                         }, void 0, false, {
                             fileName: "src/ModalVideo.tsx",
-                            lineNumber: 320,
+                            lineNumber: 318,
                             columnNumber: 17
                         }, this)
                     }, void 0, false, {
                         fileName: "src/ModalVideo.tsx",
-                        lineNumber: 166,
+                        lineNumber: 164,
                         columnNumber: 13
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/ModalVideo.tsx",
-                lineNumber: 150,
+                lineNumber: 148,
                 columnNumber: 11
             }, this)
         }, void 0, false, {
             fileName: "src/ModalVideo.tsx",
-            lineNumber: 149,
+            lineNumber: 147,
             columnNumber: 9
         }, this), document.body)
     }, void 0, false);

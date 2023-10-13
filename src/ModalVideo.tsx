@@ -1,10 +1,8 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-
 import "./ModalVideo.css";
 import { useWindowObserver } from "./useWidowObserver";
 import CloseBtn from "./CloseBtn";
-import ClassicBtn from "./buttons/start/ClassicBtn";
 import StartClassicBtn from "./buttons/start/ClassicBtn";
 import StopClassicBtn from "./buttons/stop/ClassicBtn";
 import MutedClassicBtn from "./buttons/muted/ClassicBtn";
