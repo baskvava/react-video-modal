@@ -1,4 +1,5 @@
 .modal-overlay {
+  color: #000;
   background-color: #000000b3;
   flex-direction: column;
   justify-content: center;
@@ -54,6 +55,105 @@ iframe {
 
 button:hover {
   cursor: pointer;
+}
+
+.video-frame {
+  position: relative;
+}
+
+.video-frame .controls {
+  opacity: 1;
+  color: #d1d5db;
+  background-color: #4b5563;
+  align-items: center;
+  width: 100%;
+  display: flex;
+  position: absolute;
+  bottom: 0;
+}
+
+.video-frame .controls:hover {
+  opacity: .9;
+}
+
+.video-frame .controls .time {
+  white-space: nowrap;
+}
+
+.video-frame .controls .progress {
+  width: 60%;
+  height: 8px;
+  padding: 0 10px 0 20px;
+}
+
+.video-frame .controls .progress .progress-line {
+  background-color: #000;
+  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+}
+
+.video-frame .controls .progress .progress-line .progress-bar {
+  background-color: #9ca3af;
+  border-radius: 6px;
+  height: 100%;
+  position: relative;
+}
+
+.video-frame .controls .progress .progress-line .progress-bar:after {
+  content: "";
+  background-color: #fff;
+  border-radius: 100%;
+  width: 16px;
+  height: 16px;
+  display: block;
+  position: absolute;
+  bottom: -4px;
+  right: 0;
+}
+
+.video-frame .controls button {
+  color: #fff;
+  background-color: #4b5563;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  display: flex;
+}
+
+.controls .volumn {
+  padding-right: 12px;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  background: #000 linear-gradient(#9ca3af, #9ca3af) 0 0 / 100% 100% no-repeat;
+  border-radius: 20px;
+  width: 98%;
+  height: 7px;
+}
+
+input[type="range"]:hover {
+  accent-color: #fff;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  cursor: pointer;
+  background: #fff;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+}
+
+input[type="range"]:disabled {
+  cursor: not-allowed;
+}
+
+input[type="range"]:disabled::-webkit-slider-thumb {
+  cursor: not-allowed;
 }
 
 /*# sourceMappingURL=index.09a59157.css.map */

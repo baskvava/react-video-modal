@@ -1,6 +1,6 @@
 {
   "name": "@baskvava/react-video-modal",
-  "version": "0.0.33",
+  "version": "0.1.0-alpha",
   "description": "This is a react library for video embbeded in modal",
   "source": "example/src/index.html",
   "scripts": {

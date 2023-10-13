@@ -2983,7 +2983,8 @@ function App() {
                         responsive: true,
                         isOpen: isOpen,
                         onClosed: close,
-                        autoPlay: false,
+                        autoPlay: true,
+                        // controls="custom"
                         url: "https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
                     }, void 0, false, {
                         fileName: "example/src/index.tsx",
@@ -3002,7 +3003,7 @@ function App() {
                         children: "Responsive Width Video"
                     }, void 0, false, {
                         fileName: "example/src/index.tsx",
-                        lineNumber: 30,
+                        lineNumber: 31,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -3010,7 +3011,7 @@ function App() {
                         children: "Modal"
                     }, void 0, false, {
                         fileName: "example/src/index.tsx",
-                        lineNumber: 31,
+                        lineNumber: 32,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _src.ModalVideo), {
@@ -3021,13 +3022,13 @@ function App() {
                         url: "https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
                     }, void 0, false, {
                         fileName: "example/src/index.tsx",
-                        lineNumber: 32,
+                        lineNumber: 33,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "example/src/index.tsx",
-                lineNumber: 29,
+                lineNumber: 30,
                 columnNumber: 7
             }, this)
         ]
@@ -3048,12 +3049,12 @@ const root = (0, _clientDefault.default).createRoot(document.getElementById("roo
 root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactDefault.default).StrictMode, {
     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(App, {}, void 0, false, {
         fileName: "example/src/index.tsx",
-        lineNumber: 49,
+        lineNumber: 50,
         columnNumber: 5
     }, undefined)
 }, void 0, false, {
     fileName: "example/src/index.tsx",
-    lineNumber: 48,
+    lineNumber: 49,
     columnNumber: 3
 }, undefined));
 var _c;
@@ -27274,6 +27275,14 @@ var _modalVideoCss = require("./ModalVideo.css");
 var _useWidowObserver = require("./useWidowObserver");
 var _closeBtn = require("./CloseBtn");
 var _closeBtnDefault = parcelHelpers.interopDefault(_closeBtn);
+var _classicBtn = require("./buttons/start/ClassicBtn");
+var _classicBtnDefault = parcelHelpers.interopDefault(_classicBtn);
+var _classicBtn1 = require("./buttons/stop/ClassicBtn");
+var _classicBtnDefault1 = parcelHelpers.interopDefault(_classicBtn1);
+var _classicBtn2 = require("./buttons/muted/ClassicBtn");
+var _classicBtnDefault2 = parcelHelpers.interopDefault(_classicBtn2);
+var _classicBtn3 = require("./buttons/notMuted/ClassicBtn");
+var _classicBtnDefault3 = parcelHelpers.interopDefault(_classicBtn3);
 var _s = $RefreshSig$();
 const MAX_WIDTH = 1200;
 const DEFAULT_WIDTH_RATIO = 0.8;
@@ -27281,9 +27290,17 @@ const DEFAULT_RATIO = [
     9,
     16
 ];
-function ModalVideo({ isOpen = false, onClosed, url, title, header, maxWidth = MAX_WIDTH, width, responsive: isResponsive = false, widthRatio = DEFAULT_WIDTH_RATIO, ratio = DEFAULT_RATIO, autoPlay = true }) {
+function ModalVideo({ isOpen = false, onClosed, url, title, header, maxWidth = MAX_WIDTH, width, responsive: isResponsive = false, widthRatio = DEFAULT_WIDTH_RATIO, ratio = DEFAULT_RATIO, autoPlay = true, // media type
+type = "video", controls = "custom" }) {
     _s();
     const modalRef = (0, _react.useRef)(null);
+    const videoRef = (0, _react.useRef)(null);
+    const volumnRef = (0, _react.useRef)(null);
+    const timeRangeRef = (0, _react.useRef)(null);
+    const [isPlaying, setIsPlaying] = (0, _react.useState)(autoPlay);
+    const [duration, setDuration] = (0, _react.useState)(null);
+    const [currentTime, setCurrentTime] = (0, _react.useState)(0);
+    const [isMuted, setIsMuted] = (0, _react.useState)(false);
     const { observerWidth } = (0, _useWidowObserver.useWindowObserver)();
     const [wRatio, hRatio] = ratio;
     const widowWidth = observerWidth * widthRatio;
@@ -27294,11 +27311,30 @@ function ModalVideo({ isOpen = false, onClosed, url, title, header, maxWidth = M
     // 3. Otherwise, use responsive width, maximum is MAX_WIDTH
     const videoWidth = width ? isResponsive ? Math.min(widowWidth, width) : width : Math.min(widowWidth, _maxWidth);
     const videoHeight = videoWidth * wRatio / hRatio;
-    (0, _react.useLayoutEffect)(()=>{
-        if (isOpen) document.body.style.overflow = "hidden";
-        else document.body.style.overflow = "unset";
+    (0, _react.useEffect)(()=>{
+        if (isOpen) {
+            document.body.style.overflow = "hidden";
+            if (videoRef.current && type === "video") {
+                if (autoPlay) videoRef.current.play();
+                videoRef.current.addEventListener("loadeddata", (event)=>{
+                    setDuration(event.target.duration);
+                });
+                videoRef.current.addEventListener("timeupdate", (event)=>{
+                    const cTime = event.target.currentTime;
+                    setCurrentTime(cTime);
+                });
+            }
+        } else document.body.style.overflow = "unset";
     }, [
         isOpen
+    ]);
+    (0, _react.useEffect)(()=>{
+        if (timeRangeRef.current && duration) {
+            timeRangeRef.current.style.backgroundSize = `${currentTime * 100 / duration}% ${100}%`;
+            timeRangeRef.current.value = currentTime.toString();
+        }
+    }, [
+        currentTime
     ]);
     (0, _react.useEffect)(()=>{
         const handleKeydown = (e)=>{
@@ -27334,7 +27370,7 @@ function ModalVideo({ isOpen = false, onClosed, url, title, header, maxWidth = M
                                     children: header
                                 }, void 0, false, {
                                     fileName: "src/ModalVideo.tsx",
-                                    lineNumber: 112,
+                                    lineNumber: 157,
                                     columnNumber: 19
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _closeBtnDefault.default), {
@@ -27342,13 +27378,13 @@ function ModalVideo({ isOpen = false, onClosed, url, title, header, maxWidth = M
                                     onClosed: onClosed
                                 }, void 0, false, {
                                     fileName: "src/ModalVideo.tsx",
-                                    lineNumber: 113,
+                                    lineNumber: 158,
                                     columnNumber: 19
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/ModalVideo.tsx",
-                            lineNumber: 111,
+                            lineNumber: 156,
                             columnNumber: 17
                         }, this)
                     }, void 0, false) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27357,12 +27393,12 @@ function ModalVideo({ isOpen = false, onClosed, url, title, header, maxWidth = M
                             onClosed: onClosed
                         }, void 0, false, {
                             fileName: "src/ModalVideo.tsx",
-                            lineNumber: 118,
+                            lineNumber: 163,
                             columnNumber: 17
                         }, this)
                     }, void 0, false, {
                         fileName: "src/ModalVideo.tsx",
-                        lineNumber: 117,
+                        lineNumber: 162,
                         columnNumber: 15
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27371,7 +27407,202 @@ function ModalVideo({ isOpen = false, onClosed, url, title, header, maxWidth = M
                             height: Math.floor(videoHeight),
                             width: videoWidth
                         },
-                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("iframe", {
+                        children: type === "video" ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            className: "video-frame",
+                            style: {
+                                height: Math.floor(videoHeight)
+                            },
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("video", {
+                                    controls: controls === "default" ? true : controls === "custom" ? false : controls !== "hidden",
+                                    ref: videoRef,
+                                    width: videoWidth,
+                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("source", {
+                                        src: url,
+                                        type: "video/mp4"
+                                    }, void 0, false, {
+                                        fileName: "src/ModalVideo.tsx",
+                                        lineNumber: 186,
+                                        columnNumber: 21
+                                    }, this)
+                                }, void 0, false, {
+                                    fileName: "src/ModalVideo.tsx",
+                                    lineNumber: 175,
+                                    columnNumber: 19
+                                }, this),
+                                controls === "custom" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "controls",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                            style: {
+                                                display: "flex",
+                                                alignItems: "center",
+                                                gap: "6px",
+                                                paddingLeft: "6px"
+                                            },
+                                            children: [
+                                                isPlaying ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                                    className: "start",
+                                                    "aria-label": "play pause toggle",
+                                                    onClick: ()=>{
+                                                        videoRef.current && videoRef.current.pause();
+                                                        setIsPlaying(false);
+                                                    },
+                                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _classicBtnDefault1.default), {}, void 0, false, {
+                                                        fileName: "src/ModalVideo.tsx",
+                                                        lineNumber: 209,
+                                                        columnNumber: 29
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "src/ModalVideo.tsx",
+                                                    lineNumber: 201,
+                                                    columnNumber: 27
+                                                }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                                    className: "start",
+                                                    "aria-label": "play pause toggle",
+                                                    onClick: ()=>{
+                                                        videoRef.current && videoRef.current.play();
+                                                        setIsPlaying(true);
+                                                    },
+                                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _classicBtnDefault.default), {}, void 0, false, {
+                                                        fileName: "src/ModalVideo.tsx",
+                                                        lineNumber: 220,
+                                                        columnNumber: 29
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "src/ModalVideo.tsx",
+                                                    lineNumber: 212,
+                                                    columnNumber: 27
+                                                }, this),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                    className: "time",
+                                                    children: [
+                                                        `${Math.floor(currentTime / 60)} : ${Math.floor(currentTime % 60)}`,
+                                                        " ",
+                                                        "/",
+                                                        " ",
+                                                        duration && !isNaN(duration) ? `${Math.floor(duration / 60)} : ${Math.floor(duration % 60)}` : ""
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "src/ModalVideo.tsx",
+                                                    lineNumber: 224,
+                                                    columnNumber: 25
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/ModalVideo.tsx",
+                                            lineNumber: 191,
+                                            columnNumber: 23
+                                        }, this),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                            style: {
+                                                paddingLeft: "10px",
+                                                flex: "1 1 auto",
+                                                width: "100%",
+                                                height: "100%"
+                                            },
+                                            children: duration && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                ref: timeRangeRef,
+                                                type: "range",
+                                                min: 0,
+                                                max: duration,
+                                                step: 0.1,
+                                                onChange: (e)=>{
+                                                    if (videoRef.current && timeRangeRef.current) {
+                                                        const val = Number(e.target.value);
+                                                        videoRef.current.currentTime = val;
+                                                        timeRangeRef.current.style.backgroundSize = `${val * 100 / duration}% ${100}%`;
+                                                    }
+                                                }
+                                            }, void 0, false, {
+                                                fileName: "src/ModalVideo.tsx",
+                                                lineNumber: 246,
+                                                columnNumber: 27
+                                            }, this)
+                                        }, void 0, false, {
+                                            fileName: "src/ModalVideo.tsx",
+                                            lineNumber: 237,
+                                            columnNumber: 23
+                                        }, this),
+                                        isMuted ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                            className: "start",
+                                            "aria-label": "muted not muted toggle",
+                                            onClick: ()=>{
+                                                if (videoRef.current && volumnRef.current) {
+                                                    videoRef.current.muted = false;
+                                                    setIsMuted(false);
+                                                    volumnRef.current.value = "0.5";
+                                                    volumnRef.current.style.backgroundSize = `${50}% ${100}%`;
+                                                }
+                                            },
+                                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _classicBtnDefault2.default), {}, void 0, false, {
+                                                fileName: "src/ModalVideo.tsx",
+                                                lineNumber: 278,
+                                                columnNumber: 27
+                                            }, this)
+                                        }, void 0, false, {
+                                            fileName: "src/ModalVideo.tsx",
+                                            lineNumber: 266,
+                                            columnNumber: 25
+                                        }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                            className: "start",
+                                            "aria-label": "muted not muted toggle",
+                                            onClick: ()=>{
+                                                if (videoRef.current && volumnRef.current) {
+                                                    videoRef.current.muted = true;
+                                                    setIsMuted(true);
+                                                    volumnRef.current.value = "0";
+                                                    volumnRef.current.style.backgroundSize = `${0}% ${100}%`;
+                                                }
+                                            },
+                                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _classicBtnDefault3.default), {}, void 0, false, {
+                                                fileName: "src/ModalVideo.tsx",
+                                                lineNumber: 293,
+                                                columnNumber: 27
+                                            }, this)
+                                        }, void 0, false, {
+                                            fileName: "src/ModalVideo.tsx",
+                                            lineNumber: 281,
+                                            columnNumber: 25
+                                        }, this),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                            className: "volumn",
+                                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                ref: volumnRef,
+                                                type: "range",
+                                                min: 0,
+                                                max: 1,
+                                                step: 0.1,
+                                                disabled: isMuted,
+                                                onChange: (e)=>{
+                                                    if (videoRef.current && volumnRef.current) {
+                                                        const val = Number(e.target.value);
+                                                        videoRef.current.volume = val;
+                                                        volumnRef.current.style.backgroundSize = `${val * 100}% ${100}%`;
+                                                    }
+                                                }
+                                            }, void 0, false, {
+                                                fileName: "src/ModalVideo.tsx",
+                                                lineNumber: 298,
+                                                columnNumber: 25
+                                            }, this)
+                                        }, void 0, false, {
+                                            fileName: "src/ModalVideo.tsx",
+                                            lineNumber: 297,
+                                            columnNumber: 23
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/ModalVideo.tsx",
+                                    lineNumber: 189,
+                                    columnNumber: 21
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/ModalVideo.tsx",
+                            lineNumber: 171,
+                            columnNumber: 17
+                        }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("iframe", {
                             title: title,
                             width: videoWidth,
                             height: videoHeight,
@@ -27379,28 +27610,28 @@ function ModalVideo({ isOpen = false, onClosed, url, title, header, maxWidth = M
                             allow: `${autoPlay && "autoplay"}`
                         }, void 0, false, {
                             fileName: "src/ModalVideo.tsx",
-                            lineNumber: 125,
-                            columnNumber: 15
+                            lineNumber: 320,
+                            columnNumber: 17
                         }, this)
                     }, void 0, false, {
                         fileName: "src/ModalVideo.tsx",
-                        lineNumber: 121,
+                        lineNumber: 166,
                         columnNumber: 13
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/ModalVideo.tsx",
-                lineNumber: 105,
+                lineNumber: 150,
                 columnNumber: 11
             }, this)
         }, void 0, false, {
             fileName: "src/ModalVideo.tsx",
-            lineNumber: 104,
+            lineNumber: 149,
             columnNumber: 9
         }, this), document.body)
     }, void 0, false);
 }
-_s(ModalVideo, "c4Z7bFmTnqCcYhgL2/NXfAj2lUM=", false, function() {
+_s(ModalVideo, "uvBw5p+RPziUAqP3RRx1SgehK4k=", false, function() {
     return [
         (0, _useWidowObserver.useWindowObserver)
     ];
@@ -27415,7 +27646,7 @@ $RefreshReg$(_c, "ModalVideo");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom":"j6uA9","./ModalVideo.css":"c97Lh","./useWidowObserver":"9zpqg","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./CloseBtn":"cvsPn"}],"c97Lh":[function() {},{}],"9zpqg":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom":"j6uA9","./ModalVideo.css":"c97Lh","./useWidowObserver":"9zpqg","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./CloseBtn":"cvsPn","./buttons/start/ClassicBtn":"iNzoz","./buttons/stop/ClassicBtn":"bnLah","./buttons/muted/ClassicBtn":"4vmU5","./buttons/notMuted/ClassicBtn":"f4HUk"}],"c97Lh":[function() {},{}],"9zpqg":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$3c4a = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -27661,6 +27892,257 @@ var _c;
 $RefreshReg$(_c, "CloseBtn");
 
   $parcel$ReactRefreshHelpers$1010.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"iNzoz":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$1f46 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$1f46.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>StartClassicBtn);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+function StartClassicBtn() {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("svg", {
+        fill: "rgb(209 213 219)",
+        viewBox: "0 0 24 24",
+        xmlns: "http://www.w3.org/2000/svg",
+        style: {
+            width: "32px"
+        },
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("path", {
+            d: "M12,1A11,11,0,1,0,23,12,11.013,11.013,0,0,0,12,1Zm0,20a9,9,0,1,1,9-9A9.011,9.011,0,0,1,12,21ZM10,8l6,4-6,4Z"
+        }, void 0, false, {
+            fileName: "src/buttons/start/ClassicBtn.tsx",
+            lineNumber: 9,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "src/buttons/start/ClassicBtn.tsx",
+        lineNumber: 3,
+        columnNumber: 5
+    }, this);
+}
+_c = StartClassicBtn;
+var _c;
+$RefreshReg$(_c, "StartClassicBtn");
+
+  $parcel$ReactRefreshHelpers$1f46.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"bnLah":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$86b2 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$86b2.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>StopClassicBtn);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+function StopClassicBtn() {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("svg", {
+        fill: "rgb(209 213 219)",
+        viewBox: "0 0 24 24",
+        xmlns: "http://www.w3.org/2000/svg",
+        style: {
+            width: "32px"
+        },
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("path", {
+            d: "M12,1A11,11,0,1,0,23,12,11.013,11.013,0,0,0,12,1Zm0,20a9,9,0,1,1,9-9A9.011,9.011,0,0,1,12,21ZM9,9h6v6H9Z"
+        }, void 0, false, {
+            fileName: "src/buttons/stop/ClassicBtn.tsx",
+            lineNumber: 9,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "src/buttons/stop/ClassicBtn.tsx",
+        lineNumber: 3,
+        columnNumber: 5
+    }, this);
+}
+_c = StopClassicBtn;
+var _c;
+$RefreshReg$(_c, "StopClassicBtn");
+
+  $parcel$ReactRefreshHelpers$86b2.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"4vmU5":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$cddf = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$cddf.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>MutedClassicBtn);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+function MutedClassicBtn() {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("svg", {
+        viewBox: "0 -1 24 24",
+        id: "meteor-icon-kit__regular-volume-mute",
+        fill: "none",
+        xmlns: "http://www.w3.org/2000/svg",
+        style: {
+            width: "32px"
+        },
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("path", {
+                d: "M1.29292 20.2929C0.902398 20.6834 0.902398 21.3166 1.29292 21.7071C1.68345 22.0976 2.31661 22.0976 2.70714 21.7071L3.69957 20.7147C3.70209 20.7122 3.7046 20.7097 3.70711 20.7072L21.7071 2.70721C21.7096 2.70472 21.7121 2.70221 21.7145 2.69969L22.7071 1.70711C23.0977 1.31658 23.0977 0.68342 22.7071 0.29289C22.3166 -0.097631 21.6834 -0.097631 21.2929 0.29289L1.29292 20.2929z",
+                fill: "rgb(209 213 219)"
+            }, void 0, false, {
+                fileName: "src/buttons/muted/ClassicBtn.tsx",
+                lineNumber: 10,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("path", {
+                d: "M13.5 2.30132V5.25746L11.5 7.25747L11.5 2.30132L5.68232 7.73117C5.49715 7.90399 5.25329 8.00011 5 8.00011H2V14.0001H4.75735L2.75735 16.0001H1C0.447715 16.0001 0 15.5524 0 15.0001V7.00011C0 6.44783 0.447715 6.00011 1 6.00011H4.60584L10.1354 0.83921C11.4138 -0.353996 13.5 0.55256 13.5 2.30132z",
+                fill: "rgb(209 213 219)"
+            }, void 0, false, {
+                fileName: "src/buttons/muted/ClassicBtn.tsx",
+                lineNumber: 14,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("path", {
+                d: "M9.45372 17.789L11.5 19.6989V15.7427L13.5 13.7427V19.6989C13.5 21.4477 11.4138 22.3542 10.1354 21.161L8.03867 19.2041L9.45372 17.789z",
+                fill: "rgb(209 213 219)"
+            }, void 0, false, {
+                fileName: "src/buttons/muted/ClassicBtn.tsx",
+                lineNumber: 18,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("path", {
+                d: "M17.7632 9.4796C17.9202 9.9716 18.0008 10.487 18 11.0078C17.9986 11.8868 17.7656 12.7499 17.3243 13.5101C16.8831 14.2703 16.2492 14.9008 15.4866 15.3379C15.0075 15.6126 14.8417 16.2237 15.1164 16.7028C15.391 17.182 16.0021 17.3477 16.4813 17.0731C17.5489 16.4611 18.4363 15.5784 19.0541 14.5141C19.6718 13.4498 19.9981 12.2415 20 11.0109C20.0016 9.9467 19.7606 8.89836 19.298 7.94475L17.7632 9.4796z",
+                fill: "rgb(209 213 219)"
+            }, void 0, false, {
+                fileName: "src/buttons/muted/ClassicBtn.tsx",
+                lineNumber: 22,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("path", {
+                d: "M20.7753 6.46747L20.7977 6.50613C21.5877 7.87695 22.0024 9.4318 22 11.014C21.9975 12.5962 21.578 14.1498 20.7838 15.5181C19.9895 16.8865 18.8485 18.0213 17.4759 18.8082C16.9968 19.0829 16.831 19.6939 17.1057 20.1731C17.3803 20.6522 17.9914 20.818 18.4705 20.5433C20.1482 19.5816 21.5427 18.1946 22.5135 16.5222C23.4843 14.8497 23.997 12.9509 24 11.0171C24.003 9.0833 23.4961 7.18292 22.5305 5.50747C22.4341 5.34013 22.3334 5.17564 22.2286 5.01411L20.7753 6.46747z",
+                fill: "rgb(209 213 219)"
+            }, void 0, false, {
+                fileName: "src/buttons/muted/ClassicBtn.tsx",
+                lineNumber: 26,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "src/buttons/muted/ClassicBtn.tsx",
+        lineNumber: 3,
+        columnNumber: 5
+    }, this);
+}
+_c = MutedClassicBtn;
+var _c;
+$RefreshReg$(_c, "MutedClassicBtn");
+
+  $parcel$ReactRefreshHelpers$cddf.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"f4HUk":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$331d = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$331d.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>NotMutedClassicBtn);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+function NotMutedClassicBtn() {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("svg", {
+        viewBox: "0 0 24 24",
+        id: "meteor-icon-kit__regular-volume-up",
+        fill: "none",
+        xmlns: "http://www.w3.org/2000/svg",
+        style: {
+            width: "32px"
+        },
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("g", {
+                "clip-path": "url(#clip0_525_161)",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("path", {
+                        d: "M10.1354 1.83922C11.4138 0.646005 13.5 1.55256 13.5 3.30132V20.6989C13.5 22.4477 11.4138 23.3542 10.1354 22.161L4.60584 17.0001H1C0.447715 17.0001 0 16.5524 0 16.0001V8.00011C0 7.44783 0.447715 7.00011 1 7.00011H4.60584L10.1354 1.83922ZM11.5 3.30133L5.68232 8.73117C5.49715 8.904 5.25329 9.00011 5 9.00011H2V15.0001H5C5.25329 15.0001 5.49715 15.0962 5.68232 15.2691L11.5 20.6989L11.5 3.30133Z",
+                        fill: "rgb(209 213 219)"
+                    }, void 0, false, {
+                        fileName: "src/buttons/notMuted/ClassicBtn.tsx",
+                        lineNumber: 11,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("path", {
+                        d: "M15.1164 17.7028C14.8417 17.2237 15.0075 16.6126 15.4866 16.3379C16.2492 15.9008 16.8831 15.2703 17.3243 14.5101C17.7656 13.7499 17.9986 12.8868 18 12.0078C18.0013 11.1288 17.771 10.265 17.3321 9.50346C16.8931 8.74189 16.2612 8.10948 15.5 7.66998C15.0217 7.39384 14.8578 6.78225 15.134 6.30396C15.4101 5.82567 16.0217 5.66179 16.5 5.93793C17.5657 6.55323 18.4504 7.4386 19.0649 8.50479C19.6793 9.57099 20.0019 10.7803 20 12.0109C19.9981 13.2415 19.6718 14.4498 19.0541 15.5141C18.4363 16.5784 17.5489 17.4611 16.4813 18.0731C16.0021 18.3477 15.391 18.182 15.1164 17.7028Z",
+                        fill: "rgb(209 213 219)"
+                    }, void 0, false, {
+                        fileName: "src/buttons/notMuted/ClassicBtn.tsx",
+                        lineNumber: 16,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("path", {
+                        d: "M17.4759 19.8082C16.9968 20.0829 16.831 20.6939 17.1057 21.1731C17.3803 21.6522 17.9914 21.818 18.4706 21.5433C20.1482 20.5816 21.5428 19.1946 22.5135 17.5222C23.4843 15.8497 23.997 13.9509 24 12.0171C24.003 10.0833 23.4961 8.18292 22.5305 6.50747C21.5649 4.83202 20.1747 3.44072 18.5 2.47383C18.0217 2.19769 17.4101 2.36156 17.134 2.83986C16.8578 3.31815 17.0217 3.92974 17.5 4.20588C18.8702 4.99697 20.0077 6.13531 20.7977 7.50613C21.5877 8.87695 22.0024 10.4318 22 12.014C21.9976 13.5962 21.5781 15.1498 20.7838 16.5182C19.9895 17.8865 18.8486 19.0213 17.4759 19.8082Z",
+                        fill: "rgb(209 213 219)"
+                    }, void 0, false, {
+                        fileName: "src/buttons/notMuted/ClassicBtn.tsx",
+                        lineNumber: 21,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/buttons/notMuted/ClassicBtn.tsx",
+                lineNumber: 10,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("defs", {
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("clipPath", {
+                    id: "clip0_525_161",
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("rect", {
+                        width: "24",
+                        height: "24",
+                        fill: "white"
+                    }, void 0, false, {
+                        fileName: "src/buttons/notMuted/ClassicBtn.tsx",
+                        lineNumber: 29,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
+                    fileName: "src/buttons/notMuted/ClassicBtn.tsx",
+                    lineNumber: 28,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "src/buttons/notMuted/ClassicBtn.tsx",
+                lineNumber: 27,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "src/buttons/notMuted/ClassicBtn.tsx",
+        lineNumber: 3,
+        columnNumber: 5
+    }, this);
+}
+_c = NotMutedClassicBtn;
+var _c;
+$RefreshReg$(_c, "NotMutedClassicBtn");
+
+  $parcel$ReactRefreshHelpers$331d.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;

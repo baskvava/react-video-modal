@@ -6,6 +6,7 @@
   right: 0px;
 
   background-color: rgb(0, 0, 0, 0.7);
+  color: black;
 
   display: flex;
   flex-direction: column;
@@ -59,4 +60,107 @@ iframe {
 
 button:hover {
   cursor: pointer;
+}
+
+.video-frame {
+  position: relative;
+}
+
+.video-frame .controls {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background-color: rgb(75 85 99);
+  opacity: 1;
+  /* padding: 0 6px; */
+  display: flex;
+  align-items: center;
+  color: rgb(209 213 219);
+}
+
+.video-frame .controls:hover {
+  opacity: 0.9;
+}
+
+.video-frame .controls .time {
+  white-space: nowrap;
+}
+
+.video-frame .controls .progress {
+  width: 60%;
+  height: 8px;
+  padding: 0 10px 0 20px;
+}
+
+.video-frame .controls .progress .progress-line {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  border-radius: 6px;
+}
+
+.video-frame .controls .progress .progress-line .progress-bar {
+  height: 100%;
+  background-color: rgb(156 163 175);
+  border-radius: 6px;
+  position: relative;
+}
+
+.video-frame .controls .progress .progress-line .progress-bar:after {
+  display: block;
+  content: "";
+  height: 16px;
+  width: 16px;
+  border-radius: 100%;
+  background-color: white;
+
+  position: absolute;
+  right: 0;
+  bottom: -4px;
+}
+
+.video-frame .controls button {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background-color: rgb(75 85 99);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.controls .volumn {
+  padding-right: 12px;
+}
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 98%;
+  height: 7px;
+  background: black;
+  border-radius: 20px;
+  background-image: linear-gradient(rgb(156 163 175), rgb(156 163 175));
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+input[type="range"]:hover {
+  accent-color: white;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+}
+
+input[type="range"]:disabled {
+  cursor: not-allowed;
+}
+
+input[type="range"]:disabled::-webkit-slider-thumb {
+  cursor: not-allowed;
 }

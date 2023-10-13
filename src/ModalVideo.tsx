@@ -1,9 +1,14 @@
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 import "./ModalVideo.css";
 import { useWindowObserver } from "./useWidowObserver";
 import CloseBtn from "./CloseBtn";
+import ClassicBtn from "./buttons/start/ClassicBtn";
+import StartClassicBtn from "./buttons/start/ClassicBtn";
+import StopClassicBtn from "./buttons/stop/ClassicBtn";
+import MutedClassicBtn from "./buttons/muted/ClassicBtn";
+import NotMutedClassicBtn from "./buttons/notMuted/ClassicBtn";
 
 interface Props {
   // is modal open
@@ -29,6 +34,13 @@ interface Props {
   ratio?: number[];
   // control auto play
   autoPlay?: boolean;
+  // media type
+  type?: "video" | "iframe";
+  // video control,
+  // 1. custom is from library
+  // 2. default is native
+  // 3. hidden is hide control
+  controls?: "custom" | "default" | "hidden";
 }
 
 const MAX_WIDTH = 1200;
@@ -47,8 +59,18 @@ function ModalVideo({
   widthRatio = DEFAULT_WIDTH_RATIO,
   ratio = DEFAULT_RATIO,
   autoPlay = true,
+  // media type
+  type = "video",
+  controls = "custom",
 }: Props) {
   const modalRef = useRef<HTMLDivElement | null>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const volumnRef = useRef<HTMLInputElement | null>(null);
+  const timeRangeRef = useRef<HTMLInputElement | null>(null);
+  const [isPlaying, setIsPlaying] = useState(autoPlay);
+  const [duration, setDuration] = useState<number | null>(null);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [isMuted, setIsMuted] = useState(false);
   const { observerWidth } = useWindowObserver();
   const [wRatio, hRatio] = ratio;
   const widowWidth = observerWidth * widthRatio;
@@ -65,13 +87,36 @@ function ModalVideo({
     : Math.min(widowWidth, _maxWidth);
   const videoHeight = (videoWidth * wRatio) / hRatio;
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
+      if (videoRef.current && type === "video") {
+        if (autoPlay) {
+          videoRef.current.play();
+        }
+
+        videoRef.current.addEventListener("loadeddata", (event: any) => {
+          setDuration(event.target.duration);
+        });
+
+        videoRef.current.addEventListener("timeupdate", (event: any) => {
+          const cTime = event.target.currentTime;
+          setCurrentTime(cTime);
+        });
+      }
     } else {
       document.body.style.overflow = "unset";
     }
   }, [isOpen]);
+
+  useEffect(() => {
+    if (timeRangeRef.current && duration) {
+      timeRangeRef.current.style.backgroundSize = `${
+        (currentTime * 100) / duration
+      }% ${100}%`;
+      timeRangeRef.current.value = currentTime.toString();
+    }
+  }, [currentTime]);
 
   useEffect(() => {
     const handleKeydown = (e: KeyboardEvent) => {
@@ -122,13 +167,164 @@ function ModalVideo({
               className="modal-body"
               style={{ height: Math.floor(videoHeight), width: videoWidth }}
             >
-              <iframe
-                title={title}
-                width={videoWidth}
-                height={videoHeight}
-                src={url}
-                allow={`${autoPlay && "autoplay"}`}
-              />
+              {type === "video" ? (
+                <div
+                  className="video-frame"
+                  style={{ height: Math.floor(videoHeight) }}
+                >
+                  <video
+                    controls={
+                      controls === "default"
+                        ? true
+                        : controls === "custom"
+                        ? false
+                        : controls !== "hidden"
+                    }
+                    ref={videoRef}
+                    width={videoWidth}
+                  >
+                    <source src={url} type="video/mp4" />
+                  </video>
+                  {controls === "custom" && (
+                    <div className="controls">
+                      {/* first section */}
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "6px",
+                          paddingLeft: "6px",
+                        }}
+                      >
+                        {/* button */}
+                        {isPlaying ? (
+                          <button
+                            className="start"
+                            aria-label="play pause toggle"
+                            onClick={() => {
+                              videoRef.current && videoRef.current.pause();
+                              setIsPlaying(false);
+                            }}
+                          >
+                            <StopClassicBtn />
+                          </button>
+                        ) : (
+                          <button
+                            className="start"
+                            aria-label="play pause toggle"
+                            onClick={() => {
+                              videoRef.current && videoRef.current.play();
+                              setIsPlaying(true);
+                            }}
+                          >
+                            <StartClassicBtn />
+                          </button>
+                        )}
+                        {/* time */}
+                        <span className="time">
+                          {`${Math.floor(currentTime / 60)} : ${Math.floor(
+                            currentTime % 60
+                          )}`}{" "}
+                          /{" "}
+                          {duration && !isNaN(duration)
+                            ? `${Math.floor(duration / 60)} : ${Math.floor(
+                                duration % 60
+                              )}`
+                            : ""}
+                        </span>
+                      </div>
+                      {/* time slider */}
+                      <div
+                        style={{
+                          paddingLeft: "10px",
+                          flex: "1 1 auto",
+                          width: "100%",
+                          height: "100%",
+                        }}
+                      >
+                        {duration && (
+                          <input
+                            ref={timeRangeRef}
+                            type="range"
+                            min={0}
+                            max={duration}
+                            step={0.1}
+                            onChange={(e) => {
+                              if (videoRef.current && timeRangeRef.current) {
+                                const val = Number(e.target.value);
+                                videoRef.current.currentTime = val;
+                                timeRangeRef.current.style.backgroundSize = `${
+                                  (val * 100) / duration
+                                }% ${100}%`;
+                              }
+                            }}
+                          />
+                        )}
+                      </div>
+                      {/* muted */}
+                      {isMuted ? (
+                        <button
+                          className="start"
+                          aria-label="muted not muted toggle"
+                          onClick={() => {
+                            if (videoRef.current && volumnRef.current) {
+                              videoRef.current.muted = false;
+                              setIsMuted(false);
+                              volumnRef.current.value = "0.5";
+                              volumnRef.current.style.backgroundSize = `${50}% ${100}%`;
+                            }
+                          }}
+                        >
+                          <MutedClassicBtn />
+                        </button>
+                      ) : (
+                        <button
+                          className="start"
+                          aria-label="muted not muted toggle"
+                          onClick={() => {
+                            if (videoRef.current && volumnRef.current) {
+                              videoRef.current.muted = true;
+                              setIsMuted(true);
+                              volumnRef.current.value = "0";
+                              volumnRef.current.style.backgroundSize = `${0}% ${100}%`;
+                            }
+                          }}
+                        >
+                          <NotMutedClassicBtn />
+                        </button>
+                      )}
+                      {/* volume */}
+                      <div className="volumn">
+                        <input
+                          ref={volumnRef}
+                          type="range"
+                          min={0}
+                          max={1}
+                          step={0.1}
+                          disabled={isMuted}
+                          onChange={(e) => {
+                            if (videoRef.current && volumnRef.current) {
+                              const val = Number(e.target.value);
+                              videoRef.current.volume = val;
+                              volumnRef.current.style.backgroundSize = `${
+                                val * 100
+                              }% ${100}%`;
+                            }
+                          }}
+                        />
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <iframe
+                  title={title}
+                  width={videoWidth}
+                  height={videoHeight}
+                  src={url}
+                  allow={`${autoPlay && "autoplay"}`}
+                />
+              )}
             </div>
           </div>
         </div>,

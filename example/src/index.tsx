@@ -22,7 +22,8 @@ function App() {
           responsive
           isOpen={isOpen}
           onClosed={close}
-          autoPlay={false}
+          autoPlay={true}
+          // controls="custom"
           url="https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
         />
       </div>
