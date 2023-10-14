@@ -1,0 +1,63 @@
+import rawCustom from '!!raw-loader!@site/src/components/Controls/Custom';
+import rawDefault from '!!raw-loader!@site/src/components/Controls/Default';
+import rawHidden from '!!raw-loader!@site/src/components/Controls/Hidden';
+import Custom from '@site/src/components/Controls/Custom';
+import Default from '@site/src/components/Controls/Default';
+import Hidden from '@site/src/components/Controls/Hidden';
+import CodeBlock from '@theme/CodeBlock';
+
+# Video Controls
+
+This is a nice feature to use custom controls if you don't like the native video control. Or even you don't display any control in your video
+
+> Note: This feature only support `video` type. It's not support if you use `iframe`
+
+## Props
+
+```jsx
+controls: 'custom' | 'default' | 'hidden'; // default is custom
+```
+
+## Cusomt Control
+
+> Don't need to add extra props, default is `custom` for `controls` props
+
+<Custom />
+
+<CodeBlock
+  language="jsx"
+  title="/src/components/Controls/Custom.jsx"
+  >
+  {rawCustom}
+
+</CodeBlock>
+
+## Native Control
+
+Set `default` value for `controls` props
+
+<Default />
+
+<CodeBlock
+  language="jsx"
+  title="/src/components/Controls/Default.jsx"
+  >
+  {rawDefault}
+
+</CodeBlock>
+
+## Hidden Control
+
+We can also hide the control if we don't want to show it.
+
+Set `hidden` value for `controls` props
+
+<Hidden />
+
+<CodeBlock
+  language="jsx"
+  title="/src/components/Controls/Hidden.jsx"
+  >
+  {rawHidden}
+
+</CodeBlock>
