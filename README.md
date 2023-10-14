@@ -16,6 +16,8 @@ or
 yarn add @baskvava/react-video-modal
 ```
 
+<img src="https://baskvava.github.io/portfolio/react-video-modal.png" title="demo" />
+
 ## Example
 
 ```js
